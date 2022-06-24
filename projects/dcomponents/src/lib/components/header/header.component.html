@@ -1,0 +1,38 @@
+<div id="newHeader" class="nav">
+  <div class="new-wrap hh">
+    <div class="logo">
+      <a href="https://www.deepin.org" class="logo-img">
+        <img
+          [src]="icon"
+          alt="logo"
+          class="custom-logo"
+          width="130"
+          height="48"
+        />
+      </a>
+    </div>
+    <div class="hs-toggle-menu"><span></span></div>
+    <ul class="new-menu">
+      <ng-container *ngFor="let item of menu">
+        <li [class.has-sub-menu]="item.children?.length">
+          <a *ngIf="item.url" [href]="item.url">
+            <span class="new-line-animate">{{ item.name }}</span>
+          </a>
+          <a class="menu-click" *ngIf="!item.url">
+            <span class="new-line-animate">{{ item.name }}</span>
+          </a>
+          <ul class="sub-menu">
+            <ng-container *ngFor="let child of item.children">
+              <li>
+                <a [href]="child.url">
+                  <span class="new-line-animate">{{ child.name }}</span>
+                </a>
+              </li>
+            </ng-container>
+          </ul>
+        </li>
+      </ng-container>
+      <slot></slot>
+    </ul>
+  </div>
+</div>

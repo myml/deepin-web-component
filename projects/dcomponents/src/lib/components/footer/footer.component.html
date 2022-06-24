@@ -1,0 +1,58 @@
+<div class="hs-container" id="footer">
+  <div class="hs-top-footer">
+    <div class="hs-footer" *ngFor="let item of data.nav">
+      <span class="footer-title" *ngIf="item.title">
+        {{ item.title }}
+      </span>
+      <ng-container *ngFor="let link of item.links">
+        <a target="_blank" [href]="link.url">
+          {{ link.text }}
+        </a>
+      </ng-container>
+    </div>
+
+    <div class="hs-footer"></div>
+    <div class="hs-footer">
+      <ng-container *ngIf="data.follow.qr as qr">
+        <div class="img_container">
+          <ng-container *ngFor="let item of qr.imgs">
+            <div class="img_item">
+              <img
+                class="qr_img"
+                [src]="item.img"
+                [alt]="item.alt || item.text"
+              />
+              <span>{{ item.text }}</span>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="data.follow.icon as icon">
+        <span class="footer-title">{{ "Join Us" | translate }}</span>
+        <div class="img_container">
+          <div class="img_item" *ngFor="let item of data.follow.icon.imgs">
+            <a target="_blank" [href]="item.url">
+              <img
+                class="icon_img"
+                [src]="item.img"
+                [alt]="item.alt || item.text"
+              />
+            </a>
+            <span>
+              {{ item.text }}
+            </span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div></div>
+  </div>
+  <div class="hr"></div>
+  <div class="hs-bottom-footer">
+    <div class="hs-copy-right">
+      <span style="margin-right: 20px">
+        {{ copyright }}
+      </span>
+    </div>
+  </div>
+</div>
