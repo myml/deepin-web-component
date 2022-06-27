@@ -11,10 +11,15 @@
         />
       </a>
     </div>
-    <div class="hs-toggle-menu"><span></span></div>
-    <ul class="new-menu">
+    <div class="hs-toggle-menu" (click)="phone_show = !phone_show">
+      <span></span>
+    </div>
+    <ul class="new-menu" [class.phone-show]="phone_show">
       <ng-container *ngFor="let item of menu">
-        <li [class.has-sub-menu]="item.children?.length">
+        <li
+          [class.has-sub-menu]="item.children?.length"
+          [class.is-link]="item.url"
+        >
           <a *ngIf="item.url" [href]="item.url">
             <span class="new-line-animate">{{ item.name }}</span>
           </a>

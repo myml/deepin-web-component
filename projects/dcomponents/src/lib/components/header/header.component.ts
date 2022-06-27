@@ -8,6 +8,7 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   constructor() {}
+  phone_show = false;
   icon = 'https://bbs.deepin.org/assets/image/pc/deepin-logo.svg';
   @Input() lang = 'zh';
   @Input() menu?: Menu[];
