@@ -1,12 +1,13 @@
 {
   "name": "deepin-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "wc": "ng build web-components && cat dist/web-components/*.js > dist/web-components/main.js && cat dist/web-components/*.css > dist/web-components/main.css"
   },
   "private": false,
   "files": [
