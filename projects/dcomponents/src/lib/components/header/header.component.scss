@@ -116,10 +116,8 @@ ul.new-menu {
 }
 
 .hs-toggle-menu {
-  display: block;
+  display: none;
   position: absolute;
-  right: 20px;
-  top: 20px;
   height: 40px;
   width: 40px;
   cursor: pointer;
@@ -162,7 +160,6 @@ img {
     }
   }
   .hs-toggle-menu {
-    position: absolute;
     top: 20px;
     right: 1rem;
     display: block;
