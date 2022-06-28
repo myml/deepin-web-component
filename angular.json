@@ -24,7 +24,10 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss",
+              "projects/web-components/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -148,9 +151,7 @@
               "projects/web-components/src/favicon.ico",
               "projects/web-components/src/assets"
             ],
-            "styles": [
-              "projects/web-components/src/styles.scss"
-            ],
+            "styles": ["projects/web-components/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -216,9 +217,7 @@
               "projects/web-components/src/favicon.ico",
               "projects/web-components/src/assets"
             ],
-            "styles": [
-              "projects/web-components/src/styles.scss"
-            ],
+            "styles": ["projects/web-components/src/styles.scss"],
             "scripts": []
           }
         }

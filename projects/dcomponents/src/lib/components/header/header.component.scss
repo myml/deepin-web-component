@@ -1,7 +1,3 @@
-:host {
-  height: 80px;
-  display: block;
-}
 .nav {
   user-select: none;
   color: #000000d9;
@@ -62,14 +58,14 @@ ul.new-menu {
       color: #dedede;
       padding: 0 15px;
     }
-    &:hover {
-      .sub-menu {
-        display: block;
-      }
-    }
     &.is-link:hover {
       > a {
         color: #2ca7f8;
+      }
+    }
+    &:hover {
+      .sub-menu {
+        display: block;
       }
     }
     .sub-menu {
@@ -132,9 +128,6 @@ ul.new-menu {
   top: 50%;
   margin-top: -1px;
   box-shadow: 0 10px 0px 0px #fff, 0 -10px 0px 0px #fff;
-}
-slot {
-  display: inline-block;
 }
 img {
   vertical-align: middle;

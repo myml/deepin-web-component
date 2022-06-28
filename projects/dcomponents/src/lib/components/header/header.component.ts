@@ -1,4 +1,10 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  Input,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   selector: 'd-header',
@@ -12,6 +18,7 @@ export class HeaderComponent implements OnInit {
   icon = 'https://bbs.deepin.org/assets/image/pc/deepin-logo.svg';
   @Input() lang = 'zh';
   @Input() menu?: Menu[];
+  @HostBinding('class') class = 'd-header';
   ngOnInit(): void {
     if (this.lang.startsWith('zh') && !this.menu) {
       this.menu = wordpressMenuToJSON(menuZH);
