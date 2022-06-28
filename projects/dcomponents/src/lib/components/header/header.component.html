@@ -15,7 +15,7 @@
       <span></span>
     </div>
     <ul class="new-menu" [class.phone-show]="phone_show">
-      <ng-container *ngFor="let item of menu">
+      <ng-container *ngFor="let item of _menu">
         <li
           [class.has-sub-menu]="item.children?.length"
           [class.is-link]="item.url"

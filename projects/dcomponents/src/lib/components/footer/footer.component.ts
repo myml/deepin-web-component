@@ -1,20 +1,43 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'd-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnChanges {
   constructor() {}
+  @HostBinding('class') class = 'd-footer';
   @Input() lang: 'zh' | 'en' = 'zh';
-  @Input()
-  data: DataModule = defaultDataZh;
+  @Input() data!: string;
   @Input()
   copyright = `© 2011-${new Date().getFullYear()} Wuhan Deepin Technology Co., Ltd.`;
+
+  _data!: DataModule;
+
   ngOnInit(): void {
-    if (this.lang.startsWith('en')) {
-      this.data = defaultDataEn;
+    this.init();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.init();
+  }
+
+  init() {
+    if (this.data) {
+      this._data = JSON.parse(this.data);
+      return;
+    }
+    if (this.lang.startsWith('zh')) {
+      this._data = defaultDataZh;
+    } else {
+      this._data = defaultDataEn;
     }
   }
 }

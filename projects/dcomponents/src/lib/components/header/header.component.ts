@@ -2,7 +2,9 @@ import {
   Component,
   HostBinding,
   Input,
+  OnChanges,
   OnInit,
+  SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -12,18 +14,30 @@ import {
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges {
   constructor() {}
   phone_show = false;
   icon = 'https://bbs.deepin.org/assets/image/pc/deepin-logo.svg';
   @Input() lang = 'zh';
-  @Input() menu?: Menu[];
+  @Input() menu?: string;
   @HostBinding('class') class = 'd-header';
+
+  _menu?: Menu[];
   ngOnInit(): void {
-    if (this.lang.startsWith('zh') && !this.menu) {
-      this.menu = wordpressMenuToJSON(menuZH);
+    this.initMenu();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.initMenu();
+  }
+  initMenu() {
+    if (this.menu) {
+      this._menu = JSON.parse(this.menu);
+      return;
+    }
+    if (this.lang.startsWith('zh')) {
+      this._menu = wordpressMenuToJSON(menuZH);
     } else {
-      this.menu = wordpressMenuToJSON(menuEN);
+      this._menu = wordpressMenuToJSON(menuEN);
     }
   }
 }
