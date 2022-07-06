@@ -7,6 +7,7 @@ import {
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
+import { BehaviorSubject, fromEvent, map, startWith } from 'rxjs';
 
 @Component({
   selector: 'd-header',
@@ -20,9 +21,18 @@ export class HeaderComponent implements OnInit, OnChanges {
   icon = 'https://bbs.deepin.org/assets/image/pc/deepin-logo.svg';
   @Input() lang = 'zh';
   @Input() menu?: string;
+  @Input() blend = false;
   @HostBinding('class') class = 'd-header';
-
+  @HostBinding('class.top') isTop = true;
+  showSubMenuIndex$ = new BehaviorSubject(-1);
   _menu?: Menu[];
+  top$ = fromEvent(window, 'scroll').pipe(
+    startWith(null),
+    map(() => {
+      this.isTop = document.documentElement.scrollTop < 80;
+      return this.isTop;
+    })
+  );
   ngOnInit(): void {
     this.initMenu();
   }
@@ -36,10 +46,43 @@ export class HeaderComponent implements OnInit, OnChanges {
     }
     if (this.lang.startsWith('zh')) {
       this._menu = wordpressMenuToJSON(menuZH);
+      console.log(this._menu);
     } else {
       this._menu = wordpressMenuToJSON(menuEN);
     }
   }
+  menuMouseenter(i: number) {
+    this.showSubMenuIndex$.next(i);
+  }
+}
+
+function mingdaoMenuToJSON(menuStr: string) {
+  const menuRaw = menuStr;
+  // parse csv
+  const arr = menuRaw
+    .trim()
+    .split('\n')
+    .slice(1)
+    .map((line) => line.split(','))
+    .map((arr) => {
+      const [id, title, sort, link, parent] = arr;
+      return { id, title, sort: Number(sort), url: link ? link : null, parent };
+    });
+  // Sort and group
+  return arr
+    .filter((item) => !item.parent)
+    .sort((a, b) => a.sort - b.sort)
+    .map((item) => {
+      // find children and sort
+      const children = arr
+        .filter((child) => child.parent === item.title)
+        .sort((a, b) => a.sort - b.sort)
+        .map((child) => {
+          return { name: child.title, url: child.url, children: [] };
+        });
+
+      return { name: item.title, url: item.url, children } as Menu;
+    });
 }
 
 function wordpressMenuToJSON(menuStr: string) {
@@ -57,6 +100,34 @@ export interface Menu {
   url: string;
   children: Menu[];
 }
+
+const menuZHMD = `
+记录ID,显示名称,位置排序,链接地址,父
+13ddb759-ee8a-40da-846b-29f1c8a59320,角色说明,,,社区
+13789645-18d9-4dc2-a28c-05c7cca96abf,行为准则,,,社区
+69f0d717-36c9-4e4a-b704-12e0563b06e1,贡献者攻略,,,社区
+7c6730f0-101b-4961-ab42-f9311fb741b7,国际化,,,社区
+8fb0c8ad-8b81-4872-aa0f-0e4b490764d8,应用投递,,,社区
+a9419ed2-14ba-458a-bb87-be01e9b49d62,接口文档,,,文档
+35fc0ef1-8441-49da-8a69-9fd5ea4923ac,开发者平台,,,文档
+621765d6-fbf8-4a2a-bb79-59b23f0e904c,deepin wiki,,,文档
+749d494a-7f15-41ad-8a87-4f005108957d,版本规划,,,新闻
+e9987c45-814d-425c-ae07-89cfa0ea73d7,社区资讯,,,新闻
+d577497a-e1d5-4ce7-92f5-a71a8c1eb31f,衍生版本,,,开源项目
+7654e198-77ac-40f1-9f08-e1286712d3a8,原创应用,,,开源项目
+77bc76e5-bb78-447d-ae48-ee922446a0c8,深度桌面环境,,,开源项目
+5b7f8add-aabb-46e7-bef6-91ce1f38d83b,源码仓库,,,开源项目
+6987e57a-46cd-43f3-860e-75b7281fabcc,兴趣小组,80,,
+45c44688-fe3d-492a-ba6a-85bb15220aeb,社区,70,,
+da8c5ea8-c406-4908-8a3b-6f5d02193040,论坛,60,,
+a6d576ac-a943-4c11-bff5-e6cb6f6da59c,文档,50,,
+3e1f55ef-c804-43a9-95be-8288d6da6571,新闻,40,,
+7493e4a8-f0a8-4d90-aa7e-b27d4c39a393,开源项目,30,,
+c7a1152a-89d1-44c3-9e29-ccbd71344be4,深度原创应用,,,下载
+0e252f26-4583-4704-8bc5-5225ed9e587e,深度桌面环境,,,下载
+666fdc4c-c6d2-43a3-8fa0-c4c11e1a71e3,下载,20,,
+e7743474-1ecf-406a-a2e5-1af17826a781,首页,1,,
+`;
 
 // Copy from https://www.deepin.org/wp-content/api/menu.php
 const menuEN = `{
@@ -103,12 +174,12 @@ const menuEN = `{
       },
       "19589": {
         "name": "Release Notes",
-        "url": "https://www.deepin.org/en/release-notes/",
+        "url": "https://www.deepin.org/en/category/release-notes/",
         "children": []
       },
       "19603": {
         "name": "System Update",
-        "url": "https://www.deepin.org/en/system-update/",
+        "url": "https://www.deepin.org/en/category/system-update/",
         "children": []
       },
       "20165": {
@@ -242,12 +313,12 @@ const menuZH = `{
       },
       "19589": {
         "name": "\u53d1\u884c\u6ce8\u8bb0",
-        "url": "https://www.deepin.org/zh/release-notes/",
+        "url": "https://www.deepin.org/zh/category/release-notes/",
         "children": []
       },
       "19603": {
         "name": "\u7cfb\u7edf\u66f4\u65b0",
-        "url": "https://www.deepin.org/zh/system-update/",
+        "url": "https://www.deepin.org/zh/category/system-update/",
         "children": []
       },
       "20165": {

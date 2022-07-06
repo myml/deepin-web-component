@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 d-header {
+  &:not(.top) {
+    li {
+      line-height: 64px;
+    }
+  }
+
   > li {
     line-height: 80px;
     > a {
@@ -61,7 +67,7 @@ d-header {
       }
     }
   }
-  @media (max-width: 1280px) {
+  @media (max-width: 800px) {
     > li {
       text-align: center;
       width: 100%;

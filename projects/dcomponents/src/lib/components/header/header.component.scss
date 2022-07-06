@@ -1,36 +1,53 @@
 :host {
   display: block;
-  height: 80px;
 }
-.nav {
+.d-header-nav {
   user-select: none;
   color: #000000d9;
-  line-height: 1.5715;
   font-size: 14px;
   outline: 0px;
   margin: 0;
   padding: 0;
-  background-color: #282828;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
-  width: 100%;
+  width: 100vw;
+  background-color: #282828;
+  background-size: 100% 100%;
+  transition: background-size 0.3s;
+  &.blend {
+    background: linear-gradient(#282828 50%, #28282828);
+  }
+  &:not(.top) {
+    background-size: 100% 200%;
+    .d-logo {
+      min-height: 64px;
+      line-height: 64px;
+    }
+    .d-menu > li {
+      line-height: 64px;
+    }
+  }
 }
-.new-wrap {
+.d-new-wrap {
   font-size: 14px;
   outline: 0px;
   padding: 0;
   margin: 0 auto;
-  transition: all 0.3s;
   position: relative;
-  min-height: 80px;
   max-width: 1300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-ul.new-menu {
+.d-logo {
+  position: relative;
+  min-height: 80px;
+  line-height: 80px;
+  transition: min-height 0.3s;
+}
+ul.d-menu {
   font-size: 14px;
   outline: 0px;
   padding: 0;
@@ -47,7 +64,6 @@ ul.new-menu {
     padding: 0;
     list-style: none;
     position: relative;
-    background-color: #282828;
     & > a {
       text-transform: uppercase;
       font-size: 14px;
@@ -60,19 +76,35 @@ ul.new-menu {
       margin: 0;
       text-decoration: none;
       color: #dedede;
+      transition: color 0.3s;
       padding: 0 15px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        margin-top: 12px;
+        border-bottom: 2px solid #2ca7f8;
+        left: 100%;
+        right: 100%;
+        transition: all 0.3s ease-in-out;
+      }
     }
-    &.is-link:hover {
+    &.is-link.hover {
       > a {
         color: #2ca7f8;
       }
     }
-    &:hover {
-      .sub-menu {
+    &.hover {
+      .d-sub-menu {
         display: block;
       }
+      > a:after {
+        left: 15px;
+        right: 15px;
+      }
     }
-    .sub-menu {
+    .d-sub-menu {
       font-size: 14px;
       outline: 0px;
       padding: 0;
@@ -103,7 +135,6 @@ ul.new-menu {
           background-color: transparent;
           outline: 0;
           cursor: pointer;
-          transition: color 0.3s;
           margin: 0;
           padding: 0;
           text-decoration: none;
@@ -115,29 +146,28 @@ ul.new-menu {
   }
 }
 
-.hs-toggle-menu {
+.d-toggle-menu {
   display: none;
   position: absolute;
-  height: 40px;
-  width: 40px;
+  width: 32px;
   cursor: pointer;
 }
-.hs-toggle-menu span {
-  position: relative;
+
+.d-toggle-menu span {
   height: 2px;
   width: 32px;
   margin: 0 auto;
   background: #fff;
   display: block;
-  top: 50%;
-  margin-top: -1px;
   box-shadow: 0 10px 0px 0px #fff, 0 -10px 0px 0px #fff;
 }
+
 img {
   vertical-align: middle;
 }
-@media (max-width: 1280px) {
-  ul.new-menu {
+
+@media (max-width: 800px) {
+  ul.d-menu {
     &.phone-show {
       display: block;
     }
@@ -151,23 +181,53 @@ img {
       width: 100%;
       text-align: center;
       border-bottom: 1px solid #f0f0f0;
-      .sub-menu {
+      .d-sub-menu {
         position: unset;
+      }
+      &.is-link {
+        a {
+          color: #2ca7f8;
+        }
+      }
+      a::after {
+        display: none;
+      }
+      &.has-sub-menu::after {
+        content: ">";
+        position: absolute;
+        right: 1rem;
+        top: 0;
+        color: white;
+        transform: scaleY(2.5);
+      }
+      &.hover {
+        &.has-sub-menu::after {
+          content: "";
+        }
       }
     }
   }
-  .hs-toggle-menu {
-    top: 20px;
+  .d-toggle-menu {
+    top: 50%;
     right: 1rem;
     display: block;
   }
-  .new-wrap {
+  .d-new-wrap {
     flex-direction: column;
-    .logo {
+    .d-logo {
       display: flex;
-      min-height: 80px;
+      width: 100%;
       align-items: center;
       justify-content: center;
+    }
+  }
+  .d-header-nav:not(.top) {
+    .d-logo {
+      min-height: 40px;
+      line-height: 40px;
+    }
+    .d-menu > li {
+      line-height: 40px;
     }
   }
 }
