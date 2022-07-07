@@ -28,7 +28,7 @@
         </div>
       </ng-container>
       <ng-container *ngIf="_data.follow.icon as icon">
-        <span class="footer-title">{{ "Join Us" | translate }}</span>
+        <span class="footer-title">{{ icon.title }}</span>
         <div class="img_container">
           <div class="img_item" *ngFor="let item of _data.follow.icon.imgs">
             <a target="_blank" [href]="item.url">
