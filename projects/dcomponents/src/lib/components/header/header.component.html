@@ -1,4 +1,4 @@
-<div class="d-header-nav" [class.top]="top$ | async" [class.blend]="blend">
+<div class="d-header-nav" [class.top]="top$ | push" [class.blend]="true">
   <div class="d-new-wrap hh">
     <div class="d-logo">
       <a href="https://www.deepin.org">
@@ -14,7 +14,7 @@
           [class.has-sub-menu]="item.children?.length"
           [class.is-link]="item.url"
           [class.hover]="
-            (showSubMenuIndex$ | debounceTime: 200 | async) === index
+            (showSubMenuIndex$ | debounceTime: 200 | push) === index
           "
           (mouseenter)="menuMouseenter(index)"
           (mouseleave)="menuMouseenter(-1)"
