@@ -1,0 +1,55 @@
+{
+  "nav": [
+    {
+      "title": "About Deepin",
+      "links": [
+        {
+          "text": "About Us",
+          "url": "https://www.deepin.org/aboutus/"
+        },
+        {
+          "text": "Contact Us",
+          "url": "https://www.deepin.org/contactus/"
+        },
+        {
+          "text": "Terms of Service",
+          "url": "https://www.deepin.org/agreement"
+        }
+      ]
+    },
+    {
+      "title": "Communities",
+      "links": [
+        {
+          "text": "Spanish",
+          "url": "https://deepinenespañol.org/"
+        },
+        {
+          "text": "Slovak",
+          "url": "https://deepin.sk/"
+        },
+        {
+          "text": "Turkish",
+          "url": "https://deepintr.js.org/"
+        },
+        {
+          "text": "Brazilian",
+          "url": "https://deepinbrasil.github.io/"
+        }
+      ]
+    },
+    {
+      "title": "Links",
+      "links": [
+        {
+          "text": "Ventoy",
+          "url": "https://www.ventoy.net"
+        },
+        {
+          "text": "uTools",
+          "url": "https://www.u.tools"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "nav": [
+    {
+      "title": "关于Deepin",
+      "links": [
+        {
+          "text": "关于我们",
+          "url": "https://www.deepin.org/zh/aboutus/"
+        },
+        {
+          "text": "联系我们",
+          "url": "https://www.deepin.org/zh/contactus/"
+        },
+        {
+          "text": "条款协议",
+          "url": "https://www.deepin.org/zh/agreement"
+        }
+      ]
+    },
+    {
+      "title": "海外社区",
+      "links": [
+        {
+          "text": "西班牙",
+          "url": "https://deepinenespañol.org/"
+        },
+        {
+          "text": "斯洛伐克",
+          "url": "https://deepin.sk/"
+        },
+        {
+          "text": "土耳其",
+          "url": "https://deepintr.js.org/"
+        },
+        {
+          "text": "巴西",
+          "url": "https://deepinbrasil.github.io/"
+        }
+      ]
+    },
+    {
+      "title": "友情链接",
+      "links": [
+        {
+          "text": "Ventoy",
+          "url": "https://www.ventoy.net"
+        },
+        {
+          "text": "uTools",
+          "url": "https://www.u.tools"
+        }
+      ]
+    }
+  ]
+}
