@@ -1,5 +1,7 @@
 :host {
   display: block;
+  --header-height: var(--d-header-height, 64px);
+  height: var(--header-height);
 }
 .d-header-nav {
   user-select: none;
@@ -22,11 +24,11 @@
   &:not(.top) {
     background-size: 100% 200%;
     .d-logo {
-      min-height: 64px;
-      line-height: 64px;
+      min-height: var(--header-height);
+      line-height: var(--header-height);
     }
     .d-menu > li {
-      line-height: 64px;
+      line-height: var(--header-height);
     }
   }
 }
@@ -159,7 +161,7 @@ ul.d-menu {
   margin: 0 auto;
   background: #fff;
   display: block;
-  box-shadow: 0 10px 0px 0px #fff, 0 -10px 0px 0px #fff;
+  box-shadow: 0 10px 0px 0px #fff, 0 20px 0px 0px #fff;
 }
 
 img {
@@ -208,9 +210,11 @@ img {
     }
   }
   .d-toggle-menu {
+    height: 24px;
     top: 50%;
     right: 1rem;
     display: block;
+    transform: translateY(-50%);
   }
   .d-new-wrap {
     flex-direction: column;

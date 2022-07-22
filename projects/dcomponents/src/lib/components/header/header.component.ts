@@ -7,7 +7,14 @@ import {
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
-import { BehaviorSubject, fromEvent, map, startWith } from 'rxjs';
+import {
+  BehaviorSubject,
+  debounceTime,
+  firstValueFrom,
+  fromEvent,
+  map,
+  startWith,
+} from 'rxjs';
 
 @Component({
   selector: 'd-header',
@@ -25,9 +32,11 @@ export class HeaderComponent implements OnInit, OnChanges {
   @HostBinding('class') class = 'd-header';
   @HostBinding('class.top') isTop = true;
   showSubMenuIndex$ = new BehaviorSubject(-1);
+  phoneMenuShow$ = new BehaviorSubject(false);
   _menu?: Menu[];
   top$ = fromEvent(window, 'scroll').pipe(
-    startWith(null),
+    startWith(''),
+    debounceTime(100),
     map(() => {
       this.isTop = document.documentElement.scrollTop < 80;
       return this.isTop;
@@ -45,14 +54,17 @@ export class HeaderComponent implements OnInit, OnChanges {
       return;
     }
     if (this.lang.startsWith('zh')) {
-      this._menu = wordpressMenuToJSON(menuZH);
-      console.log(this._menu);
+      this._menu = mingdaoMenuToJSON(menuZHMD);
     } else {
-      this._menu = wordpressMenuToJSON(menuEN);
+      this._menu = mingdaoMenuToJSON(menuENMD);
     }
   }
   menuMouseenter(i: number) {
     this.showSubMenuIndex$.next(i);
+  }
+  async phoneShowMenu() {
+    const show = await firstValueFrom(this.phoneMenuShow$);
+    this.phoneMenuShow$.next(!show);
   }
 }
 
@@ -103,314 +115,33 @@ export interface Menu {
 
 const menuZHMD = `
 记录ID,显示名称,位置排序,链接地址,父
-13ddb759-ee8a-40da-846b-29f1c8a59320,角色说明,,,社区
-13789645-18d9-4dc2-a28c-05c7cca96abf,行为准则,,,社区
-69f0d717-36c9-4e4a-b704-12e0563b06e1,贡献者攻略,,,社区
-7c6730f0-101b-4961-ab42-f9311fb741b7,国际化,,,社区
-8fb0c8ad-8b81-4872-aa0f-0e4b490764d8,应用投递,,,社区
-a9419ed2-14ba-458a-bb87-be01e9b49d62,接口文档,,,文档
-35fc0ef1-8441-49da-8a69-9fd5ea4923ac,开发者平台,,,文档
-621765d6-fbf8-4a2a-bb79-59b23f0e904c,deepin wiki,,,文档
-749d494a-7f15-41ad-8a87-4f005108957d,版本规划,,,新闻
-e9987c45-814d-425c-ae07-89cfa0ea73d7,社区资讯,,,新闻
-d577497a-e1d5-4ce7-92f5-a71a8c1eb31f,衍生版本,,,开源项目
-7654e198-77ac-40f1-9f08-e1286712d3a8,原创应用,,,开源项目
-77bc76e5-bb78-447d-ae48-ee922446a0c8,深度桌面环境,,,开源项目
-5b7f8add-aabb-46e7-bef6-91ce1f38d83b,源码仓库,,,开源项目
-6987e57a-46cd-43f3-860e-75b7281fabcc,兴趣小组,80,,
-45c44688-fe3d-492a-ba6a-85bb15220aeb,社区,70,,
-da8c5ea8-c406-4908-8a3b-6f5d02193040,论坛,60,,
-a6d576ac-a943-4c11-bff5-e6cb6f6da59c,文档,50,,
-3e1f55ef-c804-43a9-95be-8288d6da6571,新闻,40,,
-7493e4a8-f0a8-4d90-aa7e-b27d4c39a393,开源项目,30,,
-c7a1152a-89d1-44c3-9e29-ccbd71344be4,深度原创应用,,,下载
-0e252f26-4583-4704-8bc5-5225ed9e587e,深度桌面环境,,,下载
-666fdc4c-c6d2-43a3-8fa0-c4c11e1a71e3,下载,20,,
-e7743474-1ecf-406a-a2e5-1af17826a781,首页,1,,
+0d5ddaae-2de5-435e-9cb4-baaafd172fc6,隐私政策,30,https://www.deepin.org/zh/agreement/privacy/,关于
+8a5ccdd2-71f1-489d-adf3-d8bbde3e3158,联系我们,20,https://www.deepin.org/zh/contactus/,关于
+4149a0e1-2858-427b-8ae8-f96349cd0a4d,关于我们,10,https://www.deepin.org/zh/aboutus/,关于
+08c70855-293f-4084-9be8-4ced85037af5,关于,55,,
+bb102f83-0ca1-48ae-b921-53f8f0766edd,创建和管理指南,10,https://www.deepin.org/index/docs/zh/sig/sig/README,SIG
+32d09eec-597c-4085-b930-9dd6a0e8006e,SIG,50,,
+f9b15508-799e-496d-a40b-c8a8cc07afe5,deepin wiki,40,https://wiki.deepin.org/zh/home,下载和帮助
+b3aa32cb-51ff-4944-8ad6-370d0477302e,发行注记,20,https://www.deepin.org/zh/release-notes/,下载和帮助
+a30f1931-50d9-45b6-923a-1be08cf2be89,镜像下载,10,https://www.deepin.org/zh/download/,下载和帮助
+da8c5ea8-c406-4908-8a3b-6f5d02193040,论坛,60,https://bbs.deepin.org,
+3e1f55ef-c804-43a9-95be-8288d6da6571,开发者,40,https://docs.deepin.org,
+7493e4a8-f0a8-4d90-aa7e-b27d4c39a393,下载和帮助,30,,
+666fdc4c-c6d2-43a3-8fa0-c4c11e1a71e3,新闻,20,https://www.deepin.org/zh/community-news/,
+e7743474-1ecf-406a-a2e5-1af17826a781,首页,1,/,
 `;
-
-// Copy from https://www.deepin.org/wp-content/api/menu.php
-const menuEN = `{
-  "252": { "name": "Home", "url": "https://www.deepin.org/en", "children": [] },
-  "14221": {
-    "name": "Projects",
-    "url": "https://www.deepin.org/en/projects/dde/",
-    "children": {
-      "269": {
-        "name": "Desktop Environment",
-        "url": "https://www.deepin.org/en/dde/",
-        "children": []
-      },
-      "20185": {
-        "name": "Original Applications",
-        "url": "https://www.deepin.org/en/original/deepin-boot-maker/",
-        "children": []
-      },
-      "21587": {
-        "name": "Desktop Transplantation",
-        "url": "https://www.deepin.org/en/dde/desktop-transplantation/",
-        "children": []
-      },
-      "19604": {
-        "name": "Project Update",
-        "url": "https://www.deepin.org/en/project-update/",
-        "children": []
-      }
-    }
-  },
-  "14054": {
-    "name": "Download",
-    "url": "https://www.deepin.org/en/download",
-    "children": {
-      "14051": {
-        "name": "New Release",
-        "url": "https://www.deepin.org/en/download/",
-        "children": []
-      },
-      "24471": {
-        "name": "Official Video",
-        "url": "https://www.deepin.org/en/deepin-official-video/",
-        "children": []
-      },
-      "19589": {
-        "name": "Release Notes",
-        "url": "https://www.deepin.org/en/category/release-notes/",
-        "children": []
-      },
-      "19603": {
-        "name": "System Update",
-        "url": "https://www.deepin.org/en/category/system-update/",
-        "children": []
-      },
-      "20165": {
-        "name": "Mirrors",
-        "url": "https://www.deepin.org/en/mirrors/packages/",
-        "children": []
-      }
-    }
-  },
-  "14222": {
-    "name": "Documents",
-    "url": "https://wiki.deepin.org",
-    "children": {
-      "302": {
-        "name": "Wiki",
-        "url": "https://wiki.deepin.org/",
-        "children": []
-      },
-      "13524": {
-        "name": "Installation",
-        "url": "https://www.deepin.org/en/installation/",
-        "children": []
-      }
-    }
-  },
-  "19679": {
-    "name": "News",
-    "url": "https://www.deepin.org/en/community-news/",
-    "children": []
-  },
-  "14223": {
-    "name": "AppStore",
-    "url": "",
-    "children": {
-      "19601": {
-        "name": "Application Update",
-        "url": "https://www.deepin.org/en/application-update/",
-        "children": []
-      },
-      "29745": {
-        "name": "Deliver Apps",
-        "url": "https://shimo.im/forms/rPw9rRcKV6WkVdrY/fill",
-        "children": []
-      }
-    }
-  },
-  "14225": {
-    "name": "Community",
-    "url": "https://bbs.deepin.org/",
-    "children": {
-      "29338": {
-        "name": "Forum",
-        "url": "https://bbs.deepin.org/en/module/70",
-        "children": []
-      }
-    }
-  },
-  "20377": {
-    "name": "Developer",
-    "url": "https://www.deepin.org/en/developer-community/planning/",
-    "children": {
-      "291": {
-        "name": "Planning",
-        "url": "https://www.deepin.org/en/developer-community/planning/",
-        "children": []
-      },
-      "30939": {
-        "name": "DTK",
-        "url": "https://docs.deepin.org/",
-        "children": []
-      },
-      "21479": {
-        "name": "Internationalization",
-        "url": "https://www.deepin.org/en/developer-community/internationalization/",
-        "children": []
-      },
-      "31923": {
-        "name": "Architectural Design",
-        "url": "https://www.deepin.org/en/developer-community/architectural-design/",
-        "children": []
-      }
-    }
-  }
-}`;
-// Copy from https://www.deepin.org/wp-content/api/menu.php
-const menuZH = `{
-  "252": {
-    "name": "\u9996\u9875",
-    "url": "https://www.deepin.org/zh",
-    "children": []
-  },
-  "14221": {
-    "name": "\u9879\u76ee",
-    "url": "https://www.deepin.org/zh/projects/dde/",
-    "children": {
-      "269": {
-        "name": "\u6df1\u5ea6\u684c\u9762\u73af\u5883",
-        "url": "https://www.deepin.org/zh/dde/",
-        "children": []
-      },
-      "20185": {
-        "name": "\u6df1\u5ea6\u539f\u521b\u5e94\u7528",
-        "url": "https://www.deepin.org/zh/original/deepin-boot-maker/",
-        "children": []
-      },
-      "21587": {
-        "name": "\u6df1\u5ea6\u684c\u9762\u79fb\u690d",
-        "url": "https://www.deepin.org/zh/dde/desktop-transplantation/",
-        "children": []
-      },
-      "19604": {
-        "name": "\u9879\u76ee\u66f4\u65b0\u8bb0\u5f55",
-        "url": "https://www.deepin.org/zh/project-update/",
-        "children": []
-      }
-    }
-  },
-  "14054": {
-    "name": "\u4e0b\u8f7d",
-    "url": "https://www.deepin.org/zh/download",
-    "children": {
-      "14051": {
-        "name": "\u6700\u65b0\u7248\u672c",
-        "url": "https://www.deepin.org/zh/download/",
-        "children": []
-      },
-      "24471": {
-        "name": "\u5ba3\u4f20\u89c6\u9891",
-        "url": "https://www.deepin.org/zh/deepin-official-video/",
-        "children": []
-      },
-      "19589": {
-        "name": "\u53d1\u884c\u6ce8\u8bb0",
-        "url": "https://www.deepin.org/zh/category/release-notes/",
-        "children": []
-      },
-      "19603": {
-        "name": "\u7cfb\u7edf\u66f4\u65b0",
-        "url": "https://www.deepin.org/zh/category/system-update/",
-        "children": []
-      },
-      "20165": {
-        "name": "\u955c\u50cf\u6e90",
-        "url": "https://www.deepin.org/zh/mirrors/packages/",
-        "children": []
-      }
-    }
-  },
-  "14222": {
-    "name": "\u767e\u79d1",
-    "url": "https://wiki.deepin.org",
-    "children": {
-      "302": {
-        "name": "\u6df1\u5ea6\u767e\u79d1",
-        "url": "https://wiki.deepin.org/",
-        "children": []
-      },
-      "13524": {
-        "name": "\u5982\u4f55\u5b89\u88c5",
-        "url": "https://www.deepin.org/zh/installation/",
-        "children": []
-      }
-    }
-  },
-  "19679": {
-    "name": "\u65b0\u95fb",
-    "url": "https://www.deepin.org/zh/community-news/",
-    "children": []
-  },
-  "29744": {
-    "name": "\u62db\u8058",
-    "url": "https://bbs.deepin.org/post/207273",
-    "children": []
-  },
-  "14223": {
-    "name": "\u5546\u5e97",
-    "url": "",
-    "children": {
-      "19601": {
-        "name": "\u66f4\u65b0\u8bb0\u5f55",
-        "url": "https://www.deepin.org/zh/application-update/",
-        "children": []
-      },
-      "29745": {
-        "name": "\u6295\u9012\u5e94\u7528",
-        "url": "https://shimo.im/forms/rPw9rRcKV6WkVdrY/fill",
-        "children": []
-      }
-    }
-  },
-  "14225": {
-    "name": "\u793e\u533a",
-    "url": "https://bbs.deepin.org/",
-    "children": {
-      "314": {
-        "name": "\u8bba\u575b",
-        "url": "https://bbs.deepin.org/",
-        "children": []
-      },
-      "22218": {
-        "name": "\u6b66\u6c49LUG",
-        "url": "https://www.deepin.org/zh/welcome-to-whlug/",
-        "children": []
-      }
-    }
-  },
-  "20377": {
-    "name": "\u5f00\u53d1",
-    "url": "https://www.deepin.org/zh/developer-community/planning/",
-    "children": {
-      "291": {
-        "name": "\u7248\u672c\u89c4\u5212",
-        "url": "https://www.deepin.org/zh/developer-community/planning/",
-        "children": []
-      },
-      "30939": {
-        "name": "DTK",
-        "url": "https://docs.deepin.org/",
-        "children": []
-      },
-      "21479": {
-        "name": "\u56fd\u9645\u5316",
-        "url": "https://www.deepin.org/zh/developer-community/internationalization/",
-        "children": []
-      },
-      "31923": {
-        "name": "\u67b6\u6784\u8bbe\u8ba1",
-        "url": "https://www.deepin.org/zh/developer-community/architectural-design/",
-        "children": []
-      }
-    }
-  }
-}
+const menuENMD = `
+记录ID,显示名称,位置排序,链接地址,父
+65be81c1-e9fb-4bd3-b1b2-fc085c3b74de,HOME,1,/,
+72f9849a-f624-4790-9f44-fecfff8142ea,NEWS,20,https://www.deepin.org/en/community-news/,
+87c18421-40c5-4dc5-bac6-1ec96c60a013,DOWNLOAD&HELP,30,,
+07dd7a70-6da6-4458-ac38-5f01c8c33172,DEVELOPER,40,https://docs.deepin.org,
+7bf44d90-b6e8-46e5-91d0-9ededde8158c,FORUM,60,https://bbs.deepin.org,
+5ccba596-ee65-4fb1-823a-023b8a7132f9,ISO Download,10,https://www.deepin.org/en/download/,DOWNLOAD&HELP
+35a038c5-2992-4ac8-88de-66926b4ce947,Release Notes,20,https://www.deepin.org/en/release-notes/,DOWNLOAD&HELP
+80f3add8-284d-4e9c-8444-5f449aa7320e,deepin wiki,40,https://wiki.deepin.org/en/home,DOWNLOAD&HELP
+0cbd511b-9dc9-4d32-aead-2a616a94b7aa,ABOUT,55,,
+78e914d8-bb6f-4885-9b53-e5a94dddc628,About Us,10,https://www.deepin.org/en/aboutus/,ABOUT
+7ff4a54c-ae68-489d-831a-31b41d690d8f,Contact Us,20,https://www.deepin.org/en/contactus/,ABOUT
+eabe1290-1177-41a1-a5a6-d2edc172f97f,Privacy Policy,30,https://www.deepin.org/en/agreement/privacy/,ABOUT
 `;

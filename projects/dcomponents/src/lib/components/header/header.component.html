@@ -1,17 +1,17 @@
-<div class="d-header-nav" [class.top]="top$ | push" [class.blend]="true">
+<div class="d-header-nav" [class.top]="top$ | push">
   <div class="d-new-wrap hh">
     <div class="d-logo">
       <a href="https://www.deepin.org">
         <img [src]="icon" alt="logo" width="130" height="48" />
       </a>
-      <div class="d-toggle-menu" (click)="phone_show = !phone_show">
+      <div class="d-toggle-menu" (click)="phoneShowMenu()">
         <span></span>
       </div>
     </div>
-    <ul class="d-menu" [class.phone-show]="phone_show">
+    <ul class="d-menu" [class.phone-show]="phoneMenuShow$ | push">
       <ng-container *ngFor="let item of _menu; index as index">
         <li
-          [class.has-sub-menu]="item.children?.length"
+          [class.has-sub-menu]="item.children.length"
           [class.is-link]="item.url"
           [class.hover]="
             (showSubMenuIndex$ | debounceTime: 200 | push) === index

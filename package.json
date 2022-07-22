@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "analyzer": "ng build --stats-json && webpack-bundle-analyzer dist/deepin-components/stats.json",
-    "footer-gen": "node projects/dcomponents/mingdao.mjs",
+    "gen": "tsc mingdao.ts && node mingdao.js",
     "wc": "ng build web-components && cat dist/web-components/*.js > dist/web-components/main.js && cat dist/web-components/*.css > dist/web-components/main.css"
   },
   "private": false,
@@ -28,6 +28,7 @@
     "@angular/router": "^14.0.0",
     "@rx-angular/cdk": "1.0.0-beta.3",
     "@rx-angular/template": "1.0.0-beta.33",
+    "node-fetch": "^3.2.9",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -37,7 +38,6 @@
     "@angular/cli": "~14.0.1",
     "@angular/compiler-cli": "^14.0.0",
     "@types/jasmine": "~4.0.0",
-    "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "jasmine-core": "~4.1.0",
     "karma": "~6.3.0",
