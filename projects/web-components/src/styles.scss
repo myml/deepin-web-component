@@ -3,7 +3,7 @@
 d-header {
   &:not(.top) {
     li {
-      line-height: 64px;
+      line-height: var(--header-height);
     }
   }
 

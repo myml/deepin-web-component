@@ -1,5 +1,6 @@
 import {
   Component,
+  ElementRef,
   HostBinding,
   Input,
   OnChanges,
@@ -23,24 +24,28 @@ import {
   encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class HeaderComponent implements OnInit, OnChanges {
-  constructor() {}
+  constructor(private el: ElementRef<HTMLElement>) {}
   phone_show = false;
   icon = 'https://bbs.deepin.org/assets/image/pc/deepin-logo.svg';
   @Input() lang = 'zh';
   @Input() menu?: string;
   @Input() blend = false;
-  @HostBinding('class') class = 'd-header';
-  @HostBinding('class.top') isTop = true;
+  @HostBinding('class') class = 'd-header top';
   showSubMenuIndex$ = new BehaviorSubject(-1);
   phoneMenuShow$ = new BehaviorSubject(false);
   _menu?: Menu[];
   top$ = fromEvent(window, 'scroll').pipe(
-    startWith(''),
-    debounceTime(100),
+    debounceTime(50),
     map(() => {
-      this.isTop = document.documentElement.scrollTop < 80;
-      return this.isTop;
-    })
+      const top = document.documentElement.scrollTop < 80;
+      if (top) {
+        this.el.nativeElement.classList.add('top');
+      } else {
+        this.el.nativeElement.classList.remove('top');
+      }
+      return top;
+    }),
+    startWith(true)
   );
   ngOnInit(): void {
     this.initMenu();
@@ -128,7 +133,7 @@ da8c5ea8-c406-4908-8a3b-6f5d02193040,论坛,60,https://bbs.deepin.org,
 3e1f55ef-c804-43a9-95be-8288d6da6571,开发者,40,https://docs.deepin.org,
 7493e4a8-f0a8-4d90-aa7e-b27d4c39a393,下载和帮助,30,,
 666fdc4c-c6d2-43a3-8fa0-c4c11e1a71e3,新闻,20,https://www.deepin.org/zh/community-news/,
-e7743474-1ecf-406a-a2e5-1af17826a781,首页,1,/,
+e7743474-1ecf-406a-a2e5-1af17826a781,首页,1,https://www.deepin.org,
 `;
 const menuENMD = `
 记录ID,显示名称,位置排序,链接地址,父
