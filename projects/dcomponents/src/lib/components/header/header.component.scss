@@ -89,7 +89,7 @@ ul.d-menu {
         border-bottom: 2px solid #2ca7f8;
         left: 100%;
         right: 100%;
-        transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease;
       }
     }
     &.is-link.hover {
@@ -98,9 +98,6 @@ ul.d-menu {
       }
     }
     &.hover {
-      .d-sub-menu {
-        display: block;
-      }
       > a:after {
         left: 15px;
         right: 15px;
@@ -112,7 +109,6 @@ ul.d-menu {
       padding: 0;
       list-style: none;
       margin: 0;
-      display: none;
       position: absolute;
       left: 0;
       top: 100%;
@@ -142,6 +138,9 @@ ul.d-menu {
           text-decoration: none;
           color: #444;
           font-size: 14px;
+          &:hover {
+            color: #2ca7f8;
+          }
         }
       }
     }

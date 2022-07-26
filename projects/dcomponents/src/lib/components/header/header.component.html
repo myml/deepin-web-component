@@ -22,7 +22,14 @@
           <a [attr.href]="item.url || null">
             <span>{{ item.name }}</span>
           </a>
-          <ul class="d-sub-menu">
+          <ul
+            class="d-sub-menu"
+            [@subMenu]="
+              (showSubMenuIndex$ | debounceTime: 200 | push) === index
+                ? 'show'
+                : 'hide'
+            "
+          >
             <ng-container *ngFor="let child of item.children">
               <li>
                 <a [attr.href]="child.url || null">

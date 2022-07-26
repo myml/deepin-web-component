@@ -1,4 +1,11 @@
 import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import {
   Component,
   ElementRef,
   HostBinding,
@@ -22,6 +29,20 @@ import {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
+  animations: [
+    trigger('subMenu', [
+      state('hide', style({ display: 'none' })),
+      state('show', style({ display: 'block' })),
+      transition('hide => show', [
+        style({ height: '0', display: 'block', overflow: 'hidden' }),
+        animate('300ms ease', style({ height: '*', overflow: 'hidden' })),
+      ]),
+      transition('show => hide', [
+        style({ height: '*', overflow: 'hidden' }),
+        animate('300ms ease', style({ height: '0', overflow: 'hidden' })),
+      ]),
+    ]),
+  ],
 })
 export class HeaderComponent implements OnInit, OnChanges {
   constructor(private el: ElementRef<HTMLElement>) {}

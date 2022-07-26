@@ -4,13 +4,14 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DebounceTimePipe } from './pipes/debounce-time.pipe';
 import { PushModule } from '@rx-angular/template';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const privateList = [DebounceTimePipe];
 const publicList = [HeaderComponent, FooterComponent];
 
 @NgModule({
   declarations: [...privateList, ...publicList],
-  imports: [CommonModule, PushModule],
+  imports: [CommonModule, PushModule, BrowserAnimationsModule],
   exports: [...publicList],
 })
 export class DcomponentsModule {}
