@@ -45,35 +45,6 @@ export class FooterComponent implements OnInit, OnChanges {
   }
 }
 
-function mingdaoMenuToJSON(menuStr: string) {
-  const menuRaw = menuStr;
-  // parse csv
-  const arr = menuRaw
-    .trim()
-    .split('\n')
-    .slice(1)
-    .map((line) => line.split(','))
-    .map((arr) => {
-      const [id, title, sort, link, parent] = arr;
-      return { id, title, sort: Number(sort), url: link ? link : null, parent };
-    });
-  // Sort and group
-  return arr
-    .filter((item) => !item.parent)
-    .sort((a, b) => a.sort - b.sort)
-    .map((item) => {
-      // find children and sort
-      const links = arr
-        .filter((child) => child.parent === item.title)
-        .sort((a, b) => a.sort - b.sort)
-        .map((child) => {
-          return { text: child.title, url: child.url };
-        });
-
-      return { title: item.title, links: links } as Nav;
-    });
-}
-
 export const defaultDataZh: DataModule = {
   navs: navZH.nav,
   follow: {

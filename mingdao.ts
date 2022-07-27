@@ -1,4 +1,4 @@
-import axios from 'axios';
+import fetch from 'node-fetch';
 import { writeFile } from 'fs/promises';
 import { config } from 'dotenv';
 
@@ -11,12 +11,35 @@ async function main() {
   const key = process.env['MD_APP_KEY'] || '';
   const sign = process.env['MD_APP_SIGN'] || '';
 
+  const menu = await header({
+    server,
+    appKey: key,
+    sign,
+    worksheetId: 'header_zh',
+    viewId: '62be89614f0cd46903de555e',
+  });
+  await writeFile(
+    'projects/dcomponents/src/lib/components/header/menu_zh.json',
+    JSON.stringify({ menu }, null, '  ')
+  );
+  const menuEN = await header({
+    server,
+    appKey: key,
+    sign,
+    worksheetId: 'header_en',
+    viewId: '62da413f5d203fc600b469d0',
+  });
+  await writeFile(
+    'projects/dcomponents/src/lib/components/header/menu_en.json',
+    JSON.stringify({ menuEN }, null, '  ')
+  );
+
   const nav = await footer({
     server: server,
     appKey: key,
     sign: sign,
     worksheetId: 'footer_zh',
-    viewId: '62c294714f0cd46903deacc4',
+    viewId: '62c2943c4f0cd46903deacbb',
   });
 
   await writeFile(
@@ -29,7 +52,7 @@ async function main() {
     appKey: key,
     sign: sign,
     worksheetId: 'footer_en',
-    viewId: '62c294e8d578c6f39c52d348',
+    viewId: '62c294e8d578c6f39c52d349',
   });
 
   await writeFile(
@@ -38,40 +61,89 @@ async function main() {
   );
 }
 
-async function footer(param: {
+interface Row {
+  rowid: string;
+  parent: string;
+  sort: number;
+  children: string;
+  title: string;
+  link: string;
+}
+
+async function header(params: {
   server: string;
   appKey: string;
   sign: string;
   worksheetId: string;
   viewId: string;
 }) {
-  const url = `${param.server}/api/v2/open/worksheet/getFilterRows`;
+  const url = `${params.server}/api/v2/open/worksheet/getFilterRows`;
   const body = {
     pageSize: 50,
     pageIndex: 1,
-    ...param,
+    ...params,
   };
-  interface footerRow {
-    rowid: string;
-    parent: string;
-    sort: number;
-    children: string;
-    title: string;
-    link: string;
-  }
-  const resp = await axios.post<{ data: { rows: footerRow[] } }>(url, body);
-  console.log(resp.data);
-  const nav = resp.data?.data?.rows
-    .filter((row) => row.parent === '[]')
-    .sort((a, b) => a.sort - b.sort)
+
+  const resp = await fetch(url, {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const data = (await resp.json()) as { data: { rows: Row[] } };
+  const nav = data.data?.rows
+    .filter((row) => row.parent === '[]') // 选取一级菜单
+    .sort((a, b) => a.sort - b.sort) // 排序
     .map((row) => {
+      // 获取子菜单
+      const children = JSON.parse(row.children) as string[];
+      return {
+        name: row.title,
+        url: row.link || '',
+        children: children
+          .map(
+            (id: string) =>
+              data.data.rows.find((row) => row.rowid === id) as Row
+          )
+          .filter((row) => row !== undefined)
+          .sort((a, b) => a.sort - b.sort)
+          .map((row) => ({ name: row.title, url: row.link, children: [] })),
+      };
+    });
+  return nav;
+}
+
+async function footer(params: {
+  server: string;
+  appKey: string;
+  sign: string;
+  worksheetId: string;
+  viewId: string;
+}) {
+  const url = `${params.server}/api/v2/open/worksheet/getFilterRows`;
+  const body = {
+    pageSize: 50,
+    pageIndex: 1,
+    ...params,
+  };
+
+  const resp = await fetch(url, {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const data = (await resp.json()) as { data: { rows: Row[] } };
+  const nav = data.data?.rows
+    .filter((row) => row.parent === '[]') // 选取一级菜单
+    .sort((a, b) => a.sort - b.sort) // 排序
+    .map((row) => {
+      // 获取子菜单
       const children = JSON.parse(row.children) as string[];
       return {
         title: row.title,
         links: children
           .map(
             (id: string) =>
-              resp.data.data.rows.find((row) => row.rowid === id) as footerRow
+              data.data.rows.find((row) => row.rowid === id) as Row
           )
           .filter((row) => row !== undefined)
           .sort((a, b) => a.sort - b.sort)

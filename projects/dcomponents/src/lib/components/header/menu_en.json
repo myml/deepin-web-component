@@ -1,0 +1,50 @@
+{
+  "menuEN": [
+    {
+      "name": "HOME",
+      "url": "/",
+      "children": []
+    },
+    {
+      "name": "BLOG",
+      "url": "https://www.deepin.org/en/community-news/",
+      "children": []
+    },
+    {
+      "name": "DOWNLOAD & HELP",
+      "url": "",
+      "children": [
+        {
+          "name": "ISO Download",
+          "url": "https://www.deepin.org/en/download/",
+          "children": []
+        },
+        {
+          "name": "Installation Guide",
+          "url": "https://www.deepin.org/en/installation/",
+          "children": []
+        },
+        {
+          "name": "Release Notes",
+          "url": "https://www.deepin.org/en/release-notes/",
+          "children": []
+        },
+        {
+          "name": "Wiki",
+          "url": "https://wiki.deepin.org/en/home",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "DEVELOPER",
+      "url": "https://docs.deepin.org",
+      "children": []
+    },
+    {
+      "name": "FORUM",
+      "url": "https://bbs.deepin.org",
+      "children": []
+    }
+  ]
+}

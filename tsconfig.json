@@ -10,6 +10,7 @@
     "paths": {
       "dcomponents": ["dist/dcomponents"]
     },
+
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

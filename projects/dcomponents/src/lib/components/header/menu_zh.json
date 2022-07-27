@@ -1,0 +1,61 @@
+{
+  "menu": [
+    {
+      "name": "首页",
+      "url": "/",
+      "children": []
+    },
+    {
+      "name": "新闻",
+      "url": "https://www.deepin.org/zh/community-news/",
+      "children": []
+    },
+    {
+      "name": "下载和帮助",
+      "url": "",
+      "children": [
+        {
+          "name": "镜像下载",
+          "url": "https://www.deepin.org/zh/download/",
+          "children": []
+        },
+        {
+          "name": "安装指南",
+          "url": "https://www.deepin.org/zh/installation/",
+          "children": []
+        },
+        {
+          "name": "发行注记",
+          "url": "https://www.deepin.org/zh/release-notes/",
+          "children": []
+        },
+        {
+          "name": "Wiki",
+          "url": "https://wiki.deepin.org/zh/home",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "开发者",
+      "url": "https://docs.deepin.org",
+      "children": []
+    },
+    {
+      "name": "SIG",
+      "url": "",
+      "children": [
+        {
+          "name": "创建和管理指南",
+          "url": "https://www.deepin.org/index/docs/zh/sig/sig/README",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "论坛",
+      "url": "https://bbs.deepin.org",
+      "children": []
+    }
+  ]
+}
