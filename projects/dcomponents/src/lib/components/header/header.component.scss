@@ -1,41 +1,33 @@
 :host {
   display: block;
-  --header-height: var(--d-header-height, 64px);
+  --header-height: 80px;
   height: var(--header-height);
 }
+
+ul,
+li {
+  padding: 0;
+  list-style: none;
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .d-header-nav {
   user-select: none;
-  color: #000000d9;
   font-size: 14px;
-  outline: 0px;
-  margin: 0;
-  padding: 0;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
-  width: 100vw;
+  width: 100%;
   background-color: #282828;
   background-size: 100% 100%;
   transition: background-size 0.3s;
-  &.blend {
-    background: linear-gradient(#282828 50%, #28282828);
-  }
-  &:not(.top) {
-    background-size: 100% 200%;
-    .d-logo {
-      min-height: var(--header-height);
-      line-height: var(--header-height);
-    }
-    .d-menu > li {
-      line-height: var(--header-height);
-    }
-  }
+  background: linear-gradient(#282828, #26282c);
 }
 .d-new-wrap {
-  font-size: 14px;
-  outline: 0px;
-  padding: 0;
   margin: 0 auto;
   position: relative;
   max-width: 1300px;
@@ -44,43 +36,26 @@
   align-items: center;
 }
 .d-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  min-height: 80px;
-  line-height: 80px;
-  transition: min-height 0.3s;
+  min-height: var(--header-height);
+  transition: min-height 0.3s ease;
 }
 ul.d-menu {
-  font-size: 14px;
-  outline: 0px;
-  padding: 0;
-  list-style: none;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
   & > li {
-    outline: auto;
-    line-height: 80px;
-    font-size: 14px;
-    outline: 0px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    line-height: var(--header-height);
+    transition: line-height 0.3s ease;
     position: relative;
     & > a {
-      text-transform: uppercase;
-      font-size: 14px;
-      list-style: none;
-      background: 0 0;
-      touch-action: manipulation;
-      background-color: transparent;
-      outline: 0;
-      cursor: pointer;
-      margin: 0;
-      text-decoration: none;
       color: #dedede;
-      transition: color 0.3s;
+      transition: color 0.3s ease;
       padding: 0 15px;
-
+      // 链接的下划线
       &:after {
         content: "";
         position: absolute;
@@ -98,17 +73,13 @@ ul.d-menu {
       }
     }
     &.hover {
+      // 下划线显示
       > a:after {
         left: 15px;
         right: 15px;
       }
     }
     .d-sub-menu {
-      font-size: 14px;
-      outline: 0px;
-      padding: 0;
-      list-style: none;
-      margin: 0;
       position: absolute;
       left: 0;
       top: 100%;
@@ -118,10 +89,6 @@ ul.d-menu {
       z-index: 9;
       & > li {
         line-height: 80px;
-        font-size: 14px;
-        outline: 0px;
-        margin: 0;
-        list-style: none;
         line-height: 15px;
         padding: 10px 15px;
         float: none;
@@ -131,13 +98,7 @@ ul.d-menu {
           background: 0 0;
           touch-action: manipulation;
           background-color: transparent;
-          outline: 0;
-          cursor: pointer;
-          margin: 0;
-          padding: 0;
-          text-decoration: none;
           color: #444;
-          font-size: 14px;
           &:hover {
             color: #2ca7f8;
           }
@@ -147,27 +108,36 @@ ul.d-menu {
   }
 }
 
-.d-toggle-menu {
-  display: none;
-  position: absolute;
-  width: 32px;
-  cursor: pointer;
-}
-
-.d-toggle-menu span {
-  height: 2px;
-  width: 32px;
-  margin: 0 auto;
-  background: #fff;
-  display: block;
-  box-shadow: 0 10px 0px 0px #fff, 0 20px 0px 0px #fff;
-}
-
 img {
   vertical-align: middle;
 }
 
+.d-toggle-menu {
+  display: none;
+}
+
+/*** Phone style ***/
+
+// Menu Toggle Button
 @media (max-width: 800px) {
+  .d-toggle-menu {
+    display: block;
+    position: absolute;
+    width: 32px;
+    cursor: pointer;
+    height: 24px;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    span {
+      height: 2px;
+      width: 32px;
+      margin: 0 auto;
+      background: #fff;
+      display: block;
+      box-shadow: 0 10px 0px 0px #fff, 0 20px 0px 0px #fff;
+    }
+  }
   ul.d-menu {
     &.phone-show {
       display: block;
@@ -190,9 +160,11 @@ img {
           color: #2ca7f8;
         }
       }
+      // 隐藏下划线
       a::after {
         display: none;
       }
+      // 展开按钮
       &.has-sub-menu::after {
         content: ">";
         position: absolute;
@@ -201,6 +173,7 @@ img {
         color: white;
         transform: scaleY(2.5);
       }
+      // 隐藏展开按钮
       &.hover {
         &.has-sub-menu::after {
           content: "";
@@ -208,20 +181,12 @@ img {
       }
     }
   }
-  .d-toggle-menu {
-    height: 24px;
-    top: 50%;
-    right: 1rem;
-    display: block;
-    transform: translateY(-50%);
-  }
+  // 在手机上竖排显示
   .d-new-wrap {
     flex-direction: column;
+    // logo居中
     .d-logo {
-      display: flex;
       width: 100%;
-      align-items: center;
-      justify-content: center;
     }
   }
   .d-header-nav:not(.top) {

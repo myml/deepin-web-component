@@ -59,13 +59,17 @@ export class HeaderComponent implements OnInit, OnChanges {
   phoneMenuShow$ = new BehaviorSubject(false);
   _menu?: Menu[];
   top$ = fromEvent(window, 'scroll').pipe(
-    debounceTime(50),
     map(() => {
-      const top = document.documentElement.scrollTop < 80;
+      const top = document.documentElement.scrollTop < 100;
       if (top) {
         this.el.nativeElement.classList.add('top');
+        this.el.nativeElement.style.removeProperty('--header-height');
       } else {
         this.el.nativeElement.classList.remove('top');
+        this.el.nativeElement.style.setProperty(
+          '--header-height',
+          'var(--d-header-height, 64px)'
+        );
       }
       return top;
     }),
