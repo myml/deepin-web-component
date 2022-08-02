@@ -39,7 +39,23 @@
     {
       "name": "开发者",
       "url": "https://docs.deepin.org",
-      "children": []
+      "children": [
+        {
+          "name": "文档",
+          "url": "https://doc.uniontech.com",
+          "children": []
+        },
+        {
+          "name": "源码",
+          "url": "https://github.com/linuxdeepin",
+          "children": []
+        },
+        {
+          "name": "邮件列表",
+          "url": "https://www.freelists.org/list/deepin-devel",
+          "children": []
+        }
+      ]
     },
     {
       "name": "SIG",
@@ -48,6 +64,26 @@
         {
           "name": "创建和管理指南",
           "url": "https://www.deepin.org/index/docs/zh/sig/sig/README",
+          "children": []
+        },
+        {
+          "name": "deepin-riscv64",
+          "url": "https://www.deepin.org/index/docs/zh/sig/deepin-riscv64/README.md",
+          "children": []
+        },
+        {
+          "name": "deepin-testsig",
+          "url": "https://www.deepin.org/index/docs/zh/sig/deepin-testing/README.md",
+          "children": []
+        },
+        {
+          "name": "deepin-m1",
+          "url": "https://www.deepin.org/index/docs/zh/sig/deepin-m1/README.md",
+          "children": []
+        },
+        {
+          "name": "spark-store-deepin",
+          "url": "https://www.deepin.org/index/docs/zh/sig/spark-store-deepin/README.md",
           "children": []
         }
       ]

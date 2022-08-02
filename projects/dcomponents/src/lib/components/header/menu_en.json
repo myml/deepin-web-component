@@ -38,8 +38,24 @@
     },
     {
       "name": "DEVELOPER",
-      "url": "https://docs.deepin.org",
-      "children": []
+      "url": "",
+      "children": [
+        {
+          "name": "Documents",
+          "url": "https://docs.deepin.org/",
+          "children": []
+        },
+        {
+          "name": "Source Code",
+          "url": "https://github.com/linuxdeepin",
+          "children": []
+        },
+        {
+          "name": "Mailing List",
+          "url": "https://www.freelists.org/list/deepin-devel",
+          "children": []
+        }
+      ]
     },
     {
       "name": "FORUM",
