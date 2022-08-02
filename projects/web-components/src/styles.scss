@@ -3,6 +3,7 @@
 d-header {
   &:not(.top) {
     li {
+      transition: line-height 0.3s ease;
       line-height: var(--header-height);
     }
   }
