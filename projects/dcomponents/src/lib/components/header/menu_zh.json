@@ -42,7 +42,7 @@
       "children": [
         {
           "name": "文档",
-          "url": "https://doc.uniontech.com",
+          "url": "https://docs.deepin.org/",
           "children": []
         },
         {
@@ -68,22 +68,22 @@
         },
         {
           "name": "deepin-riscv64",
-          "url": "https://www.deepin.org/index/docs/zh/sig/deepin-riscv64/README.md",
+          "url": "https://www.deepin.org/index/docs/zh/sig/deepin-riscv64/README",
           "children": []
         },
         {
           "name": "deepin-testsig",
-          "url": "https://www.deepin.org/index/docs/zh/sig/deepin-testsig/README.md",
+          "url": "https://www.deepin.org/index/docs/zh/sig/deepin-testsig/README",
           "children": []
         },
         {
           "name": "deepin-m1",
-          "url": "https://www.deepin.org/index/docs/zh/sig/deepin-m1/README.md",
+          "url": "https://www.deepin.org/index/docs/zh/sig/deepin-m1/README",
           "children": []
         },
         {
           "name": "spark-store-deepin",
-          "url": "https://www.deepin.org/index/docs/zh/sig/spark-store-deepin/README.md",
+          "url": "https://www.deepin.org/index/docs/zh/sig/spark-store-deepin/README",
           "children": []
         }
       ]
