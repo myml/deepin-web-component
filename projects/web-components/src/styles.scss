@@ -3,13 +3,13 @@
 d-header {
   &:not(.top) {
     li {
-      transition: line-height 0.3s ease;
       line-height: var(--header-height);
     }
   }
 
   > li {
     line-height: 80px;
+    transition: line-height 0.3s ease;
     > a {
       text-transform: uppercase;
       font-size: 14px;
