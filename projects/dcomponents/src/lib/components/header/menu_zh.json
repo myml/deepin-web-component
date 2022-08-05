@@ -54,6 +54,11 @@
           "name": "邮件列表",
           "url": "https://www.freelists.org/list/deepin-devel",
           "children": []
+        },
+        {
+          "name": "上游贡献",
+          "url": "https://www.deepin.org/index/docs/zh/upstream-contributions/README.zh",
+          "children": []
         }
       ]
     },

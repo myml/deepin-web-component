@@ -54,6 +54,11 @@
           "name": "Mailing List",
           "url": "https://www.freelists.org/list/deepin-devel",
           "children": []
+        },
+        {
+          "name": "Upstream Contributions",
+          "url": "https://www.deepin.org/index/docs/en/upstream-contributions/README",
+          "children": []
         }
       ]
     },
