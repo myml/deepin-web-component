@@ -1,5 +1,5 @@
 {
-  "nav": [
+  "navs": [
     {
       "title": "About Deepin",
       "links": [
@@ -51,5 +51,40 @@
         }
       ]
     }
-  ]
+  ],
+  "icon": {
+    "title": "Join Us",
+    "imgs": [
+      {
+        "text": "GitHub",
+        "url": "https://github.com/linuxdeepin",
+        "img": "https://bbs.deepin.org/assets/contact/github2.png"
+      },
+      {
+        "text": "Telegram",
+        "url": "https://t.me/deepin",
+        "img": "https://bbs.deepin.org/assets/contact/telegram.png"
+      },
+      {
+        "text": "Facebook",
+        "url": "https://www.facebook.com/deepinlinux",
+        "img": "https://bbs.deepin.org/assets/contact/facebook.png"
+      },
+      {
+        "text": "Twitter",
+        "url": "https://twitter.com/linux_deepin",
+        "img": "https://bbs.deepin.org/assets/contact/twitter.png"
+      },
+      {
+        "text": "Reddit",
+        "url": "https://www.reddit.com/r/deepin/",
+        "img": "https://bbs.deepin.org/assets/contact/reddit.png"
+      },
+      {
+        "text": "Discord",
+        "url": "https://discord.gg/xjjkcp6H2P",
+        "img": "https://bbs.deepin.org/assets/contact/discord.png"
+      }
+    ]
+  }
 }

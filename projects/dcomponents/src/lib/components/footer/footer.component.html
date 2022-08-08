@@ -5,7 +5,7 @@
         {{ item.title }}
       </span>
       <ng-container *ngFor="let link of item.links">
-        <a target="_blank" [href]="link.url">
+        <a target="_blank" [href]="link.url" rel="noopener noreferrer">
           {{ link.text }}
         </a>
       </ng-container>
@@ -13,7 +13,7 @@
 
     <div class="hs-footer"></div>
     <div class="hs-footer">
-      <ng-container *ngIf="_data.follow.qr as qr">
+      <ng-container *ngIf="_data.qr as qr">
         <div class="img_container">
           <ng-container *ngFor="let item of qr.imgs">
             <div class="img_item">
@@ -28,11 +28,11 @@
           </ng-container>
         </div>
       </ng-container>
-      <ng-container *ngIf="_data.follow.icon as icon">
+      <ng-container *ngIf="_data.icon as icon">
         <span class="footer-title">{{ icon.title }}</span>
         <div class="img_container">
-          <div class="img_item" *ngFor="let item of _data.follow.icon.imgs">
-            <a target="_blank" [href]="item.url">
+          <div class="img_item" *ngFor="let item of _data.icon.imgs">
+            <a target="_blank" [href]="item.url" rel="noopener noreferrer">
               <img
                 class="icon_img"
                 [src]="item.img"

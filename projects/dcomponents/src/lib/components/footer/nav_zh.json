@@ -1,5 +1,5 @@
 {
-  "nav": [
+  "navs": [
     {
       "title": "关于Deepin",
       "links": [
@@ -51,5 +51,18 @@
         }
       ]
     }
-  ]
+  ],
+  "qr": {
+    "title": "加入我们",
+    "imgs": [
+      {
+        "text": "关注社区微信公众号",
+        "img": "https://bbs.deepin.org/assets/contact/wx.png"
+      },
+      {
+        "text": "加入社区QQ交流群",
+        "img": "https://bbs.deepin.org/assets/contact/qq.png"
+      }
+    ]
+  }
 }

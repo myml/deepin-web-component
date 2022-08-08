@@ -10,7 +10,6 @@ async function main() {
   const server = process.env['MD_SERVER'] || '';
   const key = process.env['MD_APP_KEY'] || '';
   const sign = process.env['MD_APP_SIGN'] || '';
-
   const menu = await header({
     server,
     appKey: key,
@@ -44,7 +43,7 @@ async function main() {
 
   await writeFile(
     'projects/dcomponents/src/lib/components/footer/nav_zh.json',
-    JSON.stringify({ nav }, null, '  ')
+    JSON.stringify(nav, null, '  ')
   );
 
   const navEN = await footer({
@@ -57,7 +56,7 @@ async function main() {
 
   await writeFile(
     'projects/dcomponents/src/lib/components/footer/nav_en.json',
-    JSON.stringify({ nav: navEN }, null, '  ')
+    JSON.stringify(navEN, null, '  ')
   );
 }
 
@@ -68,6 +67,8 @@ interface Row {
   children: string;
   title: string;
   link: string;
+  type: string;
+  img: string;
 }
 
 async function header(params: {
@@ -132,8 +133,8 @@ async function footer(params: {
     body: JSON.stringify(body),
   });
   const data = (await resp.json()) as { data: { rows: Row[] } };
-  const nav = data.data?.rows
-    .filter((row) => row.parent === '[]') // 选取一级菜单
+  const navs = data.data?.rows
+    .filter((row) => row.parent === '[]' && row.type === '链接') // 选取一级菜单
     .sort((a, b) => a.sort - b.sort) // 排序
     .map((row) => {
       // 获取子菜单
@@ -150,5 +151,34 @@ async function footer(params: {
           .map((row) => ({ text: row.title, url: row.link })),
       };
     });
-  return nav;
+
+  const iconRow = data.data?.rows.find(
+    (row) => row.parent === '[]' && row.type === '图标'
+  );
+  const icon = !iconRow
+    ? undefined
+    : {
+        title: iconRow?.title,
+        imgs: (JSON.parse(iconRow?.children ?? '[]') as string[])
+          .map((id) => data.data.rows.find((row) => row.rowid === id) as Row)
+          .filter((row) => row !== undefined)
+          .sort((a, b) => a.sort - b.sort)
+          .map((row) => ({ text: row.title, url: row.link, img: row.img })),
+      };
+
+  const qrRow = data.data?.rows.find(
+    (row) => row.parent === '[]' && row.type === '二维码'
+  );
+  const qr = !qrRow
+    ? undefined
+    : {
+        title: qrRow?.title,
+        imgs: (JSON.parse(qrRow?.children ?? '[]') as string[])
+          .map((id) => data.data.rows.find((row) => row.rowid === id) as Row)
+          .filter((row) => row !== undefined)
+          .sort((a, b) => a.sort - b.sort)
+          .map((row) => ({ text: row.title, url: row.link, img: row.img })),
+      };
+
+  return { navs, qr, icon };
 }
