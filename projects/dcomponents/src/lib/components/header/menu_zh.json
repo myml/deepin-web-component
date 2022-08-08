@@ -41,11 +41,6 @@
       "url": "https://docs.deepin.org",
       "children": [
         {
-          "name": "文档",
-          "url": "https://docs.deepin.org/",
-          "children": []
-        },
-        {
           "name": "源码",
           "url": "https://github.com/linuxdeepin",
           "children": []

@@ -30,7 +30,7 @@ async function main() {
   });
   await writeFile(
     'projects/dcomponents/src/lib/components/header/menu_en.json',
-    JSON.stringify({ menuEN }, null, '  ')
+    JSON.stringify({ menu: menuEN }, null, '  ')
   );
 
   const nav = await footer({

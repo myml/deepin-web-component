@@ -9,7 +9,7 @@
       </div>
     </div>
     <ul class="d-menu" [class.phone-show]="phoneMenuShow$ | push">
-      <ng-container *ngFor="let item of _menu; index as index">
+      <ng-container *ngFor="let item of menu$ | push; index as index">
         <li
           [class.has-sub-menu]="item.children.length"
           [class.is-link]="item.url"
