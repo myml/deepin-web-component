@@ -26,3 +26,5 @@ jobs:
           MD_APP_SIGN: ${{ secrets.MD_APP_SIGN }}
         
       - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          token: ${{ secrets.PAT }}
