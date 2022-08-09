@@ -57,10 +57,12 @@
     "imgs": [
       {
         "text": "关注社区微信公众号",
+        "url": "",
         "img": "https://bbs.deepin.org/assets/contact/wx.png"
       },
       {
         "text": "加入社区QQ交流群",
+        "url": "",
         "img": "https://bbs.deepin.org/assets/contact/qq.png"
       }
     ]
