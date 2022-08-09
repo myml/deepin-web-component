@@ -18,15 +18,12 @@ import {
 import { HttpClient } from '@angular/common/http';
 import {
   BehaviorSubject,
-  debounceTime,
-  delay,
   firstValueFrom,
   fromEvent,
   map,
   of,
   shareReplay,
   startWith,
-  Subject,
   switchMap,
 } from 'rxjs';
 
@@ -77,31 +74,37 @@ export class HeaderComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.refreshMenu$.next('');
   }
-
+  get isZH() {
+    return this.lang.startsWith('zh');
+  }
+  get defaultData(): Menu[] {
+    return this.isZH ? menuZH.menu : menuEN.menu;
+  }
   createMenuObs() {
     return this.refreshMenu$.pipe(
-      debounceTime(100),
       switchMap(() => {
         // 使用Input
         if (this.menu) {
-          return of(JSON.parse(this.menu) as Menu[]);
+          return of(JSON.parse(this.menu) as Menu[]).pipe(
+            startWith(this.defaultData)
+          );
         }
-        const url = `https://www.deepin.org/index/src/assets/docs/zh/deepin-web-component/header/menu_${this.lang}.json`;
+        // 使用远程值
+        const lang = this.isZH ? 'zh' : 'en';
+        const url = `https://www.deepin.org/index/src/assets/docs/${lang}/deepin-web-component/header/menu_${lang}.json`;
         return this.http.get<{ menu: Menu[] }>(url).pipe(
           map((data) => {
-            return data?.menu?.length ? data.menu : menuZH.menu;
-          })
+            return data?.menu?.length ? data.menu : this.defaultData;
+          }),
+          startWith(this.defaultData)
         );
       }),
-      startWith(this.lang.startsWith('zh') ? menuZH.menu : menuEN.menu),
       shareReplay({ refCount: true, bufferSize: 1 })
     );
   }
-
   menuMouseenter(i: number) {
     this.showSubMenuIndex$.next(i);
   }
-
   async phoneShowMenu() {
     const show = await firstValueFrom(this.phoneMenuShow$);
     this.phoneMenuShow$.next(!show);

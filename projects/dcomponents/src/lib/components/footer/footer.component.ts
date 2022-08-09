@@ -31,9 +31,6 @@ export class FooterComponent implements OnInit, OnChanges {
   @Input() data!: string;
   @Input()
   copyright = `© 2011-${new Date().getFullYear()} Wuhan Deepin Technology Co., Ltd.`;
-  @Input() dataURL =
-    'https://www.deepin.org/index/src/assets/docs/zh/deepin-web-component/footer/';
-
   refreshData$ = new BehaviorSubject('');
   data$ = this.createDataObs();
 
@@ -43,22 +40,29 @@ export class FooterComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.refreshData$.next('');
   }
+  get isZH() {
+    return this.lang.startsWith('zh');
+  }
+  get defaultData(): DataModule {
+    return this.isZH ? navZH : navEN;
+  }
   createDataObs() {
-    const isZH = this.lang.startsWith('zh');
-    const defaultData: DataModule = isZH ? navZH : navEN;
     return this.refreshData$.pipe(
       switchMap(() => {
         if (this.data) {
-          return of(JSON.parse(this.data) as DataModule);
+          return of(JSON.parse(this.data) as DataModule).pipe(
+            startWith(this.defaultData)
+          );
         }
-        const url = this.dataURL + `nav_${isZH ? 'zh' : 'en'}.json`;
+        const lang = this.isZH ? 'zh' : 'en';
+        const url = `https://www.deepin.org/index/src/assets/docs/${lang}/deepin-web-component/footer/nav_${lang}.json`;
         return this.http.get<DataModule>(url).pipe(
           map((data) => {
-            return data?.navs?.length ? data : defaultData;
-          })
+            return data?.navs?.length ? data : this.defaultData;
+          }),
+          startWith(this.defaultData)
         );
       }),
-      startWith(defaultData),
       shareReplay({ refCount: true, bufferSize: 1 })
     );
   }
