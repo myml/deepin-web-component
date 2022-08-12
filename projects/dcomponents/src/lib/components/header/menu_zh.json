@@ -90,6 +90,11 @@
           "name": "spark-store-deepin",
           "url": "https://www.deepin.org/index/docs/zh/sig/spark-store-deepin/README",
           "children": []
+        },
+        {
+          "name": "更多",
+          "url": "https://www.deepin.org/index/docs/zh/sig/list",
+          "children": []
         }
       ]
     },
