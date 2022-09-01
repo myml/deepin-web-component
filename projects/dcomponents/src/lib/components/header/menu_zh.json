@@ -67,6 +67,11 @@
       "url": "https://docs.deepin.org",
       "children": [
         {
+          "name": "贡献指南",
+          "url": "https://www.deepin.org/index/docs/zh/%E5%BC%80%E5%8F%91%E8%80%85%E6%8C%87%E5%8D%97/contributing-handbook.md",
+          "children": []
+        },
+        {
           "name": "文档",
           "url": "https://docs.deepin.org/",
           "children": []
@@ -84,11 +89,6 @@
         {
           "name": "上游贡献",
           "url": "https://www.deepin.org/index/docs/zh/upstream-contributions/README.zh",
-          "children": []
-        },
-        {
-          "name": "贡献指南",
-          "url": "https://www.deepin.org/index/docs/zh/%E5%BC%80%E5%8F%91%E8%80%85%E6%8C%87%E5%8D%97/contributing-handbook.md",
           "children": []
         }
       ]
