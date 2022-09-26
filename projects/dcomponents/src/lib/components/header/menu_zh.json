@@ -42,22 +42,22 @@
       "children": [
         {
           "name": "概述",
-          "url": "https://www.deepin.org/index/docs/zh/关于Deepin/Deepin社区/关于社区",
+          "url": "https://www.deepin.org/index/docs/wiki/关于Deepin/Deepin社区/关于社区",
           "children": []
         },
         {
           "name": "参与我们",
-          "url": "https://www.deepin.org/index/docs/zh/关于Deepin/Deepin社区/参与我们",
+          "url": "https://www.deepin.org/index/docs/wiki/关于Deepin/Deepin社区/参与我们",
           "children": []
         },
         {
           "name": "交流方式",
-          "url": "https://www.deepin.org/index/docs/zh/关于Deepin/Deepin社区/交流方式",
+          "url": "https://www.deepin.org/index/docs/wiki/关于Deepin/Deepin社区/交流方式",
           "children": []
         },
         {
           "name": "行为准则",
-          "url": "https://www.deepin.org/index/docs/zh/关于Deepin/Deepin社区/行为准则",
+          "url": "https://www.deepin.org/index/docs/wiki/关于Deepin/Deepin社区/行为准则",
           "children": []
         }
       ]
@@ -68,7 +68,7 @@
       "children": [
         {
           "name": "贡献指南",
-          "url": "https://www.deepin.org/index/docs/zh/%E5%BC%80%E5%8F%91%E8%80%85%E6%8C%87%E5%8D%97/contributing-handbook.md",
+          "url": "https://www.deepin.org/index/docs/wiki/开发者指南/contributing-handbook.md",
           "children": []
         },
         {
@@ -99,32 +99,32 @@
       "children": [
         {
           "name": "创建和管理指南",
-          "url": "https://www.deepin.org/index/docs/zh/sig/sig/README",
+          "url": "https://www.deepin.org/index/docs/sig/sig/README.zh_CN",
           "children": []
         },
         {
           "name": "deepin-riscv64",
-          "url": "https://www.deepin.org/index/docs/zh/sig/deepin-riscv64/README",
+          "url": "https://www.deepin.org/index/docs/sig/sig/deepin-riscv64/README",
           "children": []
         },
         {
           "name": "deepin-testsig",
-          "url": "https://www.deepin.org/index/docs/zh/sig/deepin-testsig/README",
+          "url": "https://www.deepin.org/index/docs/sig/sig/deepin-testsig/README",
           "children": []
         },
         {
           "name": "deepin-m1",
-          "url": "https://www.deepin.org/index/docs/zh/sig/deepin-m1/README",
+          "url": "https://www.deepin.org/index/docs/sig/sig/deepin-m1/README",
           "children": []
         },
         {
           "name": "spark-store-deepin",
-          "url": "https://www.deepin.org/index/docs/zh/sig/spark-store-deepin/README",
+          "url": "https://www.deepin.org/index/docs/sig/sig/spark-store-deepin/README",
           "children": []
         },
         {
           "name": "更多",
-          "url": "https://www.deepin.org/index/docs/zh/sig/list",
+          "url": "https://www.deepin.org/index/docs/sig/sig/LISTS",
           "children": []
         }
       ]
