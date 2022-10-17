@@ -90,6 +90,11 @@
           "name": "上游贡献",
           "url": "https://www.deepin.org/index/docs/zh/upstream-contributions/README.zh",
           "children": []
+        },
+        {
+          "name": "应用投递",
+          "url": "https://shimo.im/forms/rPw9rRcKV6WkVdrY/fill",
+          "children": []
         }
       ]
     },
