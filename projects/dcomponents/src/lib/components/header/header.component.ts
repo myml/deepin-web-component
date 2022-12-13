@@ -11,6 +11,7 @@ import {
 import { HttpClient } from '@angular/common/http';
 import {
   BehaviorSubject,
+  first,
   firstValueFrom,
   fromEvent,
   map,
@@ -85,11 +86,14 @@ export class HeaderComponent implements OnInit, OnChanges {
       shareReplay({ refCount: true, bufferSize: 1 })
     );
   }
-  menuMouseenter(i: number) {
-    this.showSubMenuIndex$.next(i);
+  async menuMouseenter(i: number) {
+    const index = await firstValueFrom(this.showSubMenuIndex$.pipe(first()));
+    console.log(index, i);
+    this.showSubMenuIndex$.next(index === i ? -1 : i);
   }
   async phoneShowMenu() {
     const show = await firstValueFrom(this.phoneMenuShow$);
+    this.showSubMenuIndex$.next(-1);
     this.phoneMenuShow$.next(!show);
   }
 

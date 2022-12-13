@@ -13,6 +13,8 @@
         <li
           [class.has-sub-menu]="item.children.length"
           [class.is-link]="item.url"
+          [class.hover]="(showSubMenuIndex$ | push) === index"
+          (click)="menuMouseenter(index)"
         >
           <a [attr.href]="item.url || null">
             <span>{{ item.name }}</span>

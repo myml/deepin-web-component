@@ -68,12 +68,13 @@ ul.d-menu {
         transition: all 0.3s ease;
       }
     }
-    &.is-link.hover {
+    &.is-link:hover {
       > a {
         color: #2ca7f8;
       }
     }
-    &:hover {
+    &:hover,
+    &.hover {
       // 下划线显示
       > a:after {
         left: 15px;
@@ -179,12 +180,13 @@ img {
         right: 1rem;
         top: 0;
         color: white;
-        transform: scaleY(2.5);
+        font-size: 1.5rem;
+        transition: transform 0.3s;
       }
       // 隐藏展开按钮
       &.hover {
         &.has-sub-menu::after {
-          content: "";
+          transform: rotate(90deg);
         }
       }
     }
