@@ -1,11 +1,4 @@
 import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
-import {
   Component,
   ElementRef,
   HostBinding,
@@ -35,20 +28,6 @@ import menuEN from './menu_en.json';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
-  animations: [
-    trigger('subMenu', [
-      state('hide', style({ display: 'none' })),
-      state('show', style({ display: 'block' })),
-      transition('hide => show', [
-        style({ height: '0', display: 'block', overflow: 'hidden' }),
-        animate('300ms ease', style({ height: '*', overflow: 'hidden' })),
-      ]),
-      transition('show => hide', [
-        style({ height: '*', overflow: 'hidden' }),
-        animate('300ms ease', style({ height: '0', overflow: 'hidden' })),
-      ]),
-    ]),
-  ],
 })
 export class HeaderComponent implements OnInit, OnChanges {
   constructor(private el: ElementRef<HTMLElement>, private http: HttpClient) {}
@@ -57,18 +36,22 @@ export class HeaderComponent implements OnInit, OnChanges {
   @Input() lang = 'zh';
   @Input() menu?: string;
   @Input() blend = false;
-  @HostBinding('class') class = 'd-header top';
+  @HostBinding('class') class = 'd-header';
   // 菜单是否显示
   phoneMenuShow$ = new BehaviorSubject(false);
   // 子菜单是否显示
   showSubMenuIndex$ = new BehaviorSubject(-1);
   // 滚动条是否在顶部
-  top$ = this.isTop();
+  top$ = of(false);
 
   refreshMenu$ = new BehaviorSubject('');
   menu$ = this.createMenuObs();
   _menu?: Menu[];
   ngOnInit(): void {
+    this.el.nativeElement.style.setProperty(
+      '--header-height',
+      'var(--d-header-height, 64px)'
+    );
     this.refreshMenu$.next('');
   }
   ngOnChanges(changes: SimpleChanges): void {

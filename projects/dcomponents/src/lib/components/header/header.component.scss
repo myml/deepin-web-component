@@ -54,6 +54,7 @@ ul.d-menu {
     & > a {
       color: #dedede;
       transition: color 0.3s ease;
+      transition-delay: 0.1s;
       padding: 0 15px;
       // 链接的下划线
       &:after {
@@ -72,11 +73,14 @@ ul.d-menu {
         color: #2ca7f8;
       }
     }
-    &.hover {
+    &:hover {
       // 下划线显示
       > a:after {
         left: 15px;
         right: 15px;
+      }
+      .d-sub-menu {
+        max-height: 500px;
       }
     }
     .d-sub-menu {
@@ -87,6 +91,10 @@ ul.d-menu {
       min-width: 200px;
       box-shadow: 0 2px 6px #0003;
       z-index: 9;
+      max-height: 0px;
+      transition: max-height 0.3s ease;
+      transition-delay: 0.1s;
+      overflow: hidden;
       & > li {
         line-height: 80px;
         line-height: 15px;

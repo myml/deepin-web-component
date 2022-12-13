@@ -1,4 +1,44 @@
-<d-header [lang]="lang" [blend]="true"></d-header>
+<d-header [lang]="lang" [blend]="true">
+  <li slot="menu">
+    <a class="menu-click">
+      <span class="new-line-animate" *ngIf="lang.includes('zh')">
+        语言：
+        <img
+          src="//www.deepin.org/wp-content/plugins/qtranslate-x/flags/cn.png"
+          alt="zh-cn"
+        />
+      </span>
+      <span class="new-line-animate" *ngIf="lang.includes('en')">
+        LANGUAGE:
+        <img
+          src="//www.deepin.org/wp-content/plugins/qtranslate-x/flags/gb.png"
+          alt="en"
+        />
+      </span>
+    </a>
+    <ul class="sub-menu">
+      <li>
+        <!-- 在不支持js脚本的环境中，通过查询参数传递切换语言 -->
+        <a href="/zh{{ false ? '?set_language=zh' : '' }}">
+          <img
+            src="//www.deepin.org/wp-content/plugins/qtranslate-x/flags/cn.png"
+            alt="中文"
+          />
+          中文
+        </a>
+      </li>
+      <li>
+        <a href="/en{{ false ? '?set_language=en' : '' }}">
+          <img
+            src="//www.deepin.org/wp-content/plugins/qtranslate-x/flags/gb.png"
+            alt="English"
+          />
+          English
+        </a>
+      </li>
+    </ul>
+  </li>
+</d-header>
 <div style="height: 2000px">
   <img
     src="https://www-pre.deepin.org/index/assets/imgs/banner_1920.webp"

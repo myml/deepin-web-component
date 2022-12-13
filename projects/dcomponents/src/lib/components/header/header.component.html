@@ -13,23 +13,11 @@
         <li
           [class.has-sub-menu]="item.children.length"
           [class.is-link]="item.url"
-          [class.hover]="
-            (showSubMenuIndex$ | debounceTime: 200 | push) === index
-          "
-          (mouseenter)="menuMouseenter(index)"
-          (mouseleave)="menuMouseenter(-1)"
         >
           <a [attr.href]="item.url || null">
             <span>{{ item.name }}</span>
           </a>
-          <ul
-            class="d-sub-menu"
-            [@subMenu]="
-              (showSubMenuIndex$ | debounceTime: 200 | push) === index
-                ? 'show'
-                : 'hide'
-            "
-          >
+          <ul class="d-sub-menu">
             <ng-container *ngFor="let child of item.children">
               <li>
                 <a [attr.href]="child.url || null">
