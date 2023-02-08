@@ -33,6 +33,11 @@
           "name": "Wiki",
           "url": "https://wiki.deepin.org/zh/home",
           "children": []
+        },
+        {
+          "name": "跨端协同",
+          "url": "https://www.deepin.org/index/assistant",
+          "children": []
         }
       ]
     },
