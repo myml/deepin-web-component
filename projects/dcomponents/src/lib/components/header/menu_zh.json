@@ -47,22 +47,22 @@
       "children": [
         {
           "name": "概述",
-          "url": "https://www.deepin.org/index/docs/wiki/关于Deepin/Deepin社区/关于社区",
+          "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/关于社区",
           "children": []
         },
         {
           "name": "参与我们",
-          "url": "https://www.deepin.org/index/docs/wiki/关于Deepin/Deepin社区/参与我们",
+          "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/参与我们",
           "children": []
         },
         {
           "name": "交流方式",
-          "url": "https://www.deepin.org/index/docs/wiki/关于Deepin/Deepin社区/交流方式",
+          "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/交流方式",
           "children": []
         },
         {
           "name": "行为准则",
-          "url": "https://www.deepin.org/index/docs/wiki/关于Deepin/Deepin社区/行为准则",
+          "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/行为准则",
           "children": []
         }
       ]
@@ -78,7 +78,7 @@
         },
         {
           "name": "贡献指南",
-          "url": "https://www.deepin.org/index/docs/wiki/01_deepin配套生态/01_deepin入门/02_开发相关/02_贡献指南/参与贡献.md",
+          "url": "https://www.deepin.org/index/docs/wiki/05_HOW-TO/06_参与deepin贡献相关/参与贡献.md",
           "children": []
         },
         {
