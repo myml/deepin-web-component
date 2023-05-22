@@ -3,7 +3,7 @@ import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from 'projects/dcomponents/src/lib/components/footer/footer.component';
 import { HeaderComponent } from 'projects/dcomponents/src/lib/components/header/header.component';
-import { DcomponentsModule } from 'projects/dcomponents/src/public-api';
+import { DcomponentsModule } from 'projects/dcomponents/src/lib/dcomponents.module';
 
 const components: { [key: string]: any } = {
   'd-header': HeaderComponent,
@@ -18,10 +18,10 @@ const components: { [key: string]: any } = {
 })
 export class AppModule implements DoBootstrap {
   constructor(private injector: Injector) {
-    Object.keys(components).forEach((name) => {
+    for (const name of Object.keys(components)) {
       const c = createCustomElement(components[name], { injector });
       customElements.define(name, c);
-    });
+    }
   }
   ngDoBootstrap(appRef: ApplicationRef): void {}
 }

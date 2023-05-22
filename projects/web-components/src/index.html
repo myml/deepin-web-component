@@ -8,9 +8,17 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
-    <d-header lang="en">
-      <li slot="menu">
-        <a class="menu-click">
+    <d-header
+      lang="zh"
+      menu='[{"name": "首页", "url": "123" }, {"name": "首页", "url": "123" }]'
+      append="append"
+    >
+      <li
+        class="d-menu-li has-sub-menu"
+        slot="menu"
+        onclick="event.target.classList.toggle('hover')"
+      >
+        <a>
           <span class="new-line-animate">
             语言：
             <img
@@ -19,10 +27,10 @@
             />
           </span>
         </a>
-        <ul class="sub-menu">
+        <ul class="d-sub-menu">
           <li>
             <!-- 在不支持js脚本的环境中，通过查询参数传递切换语言 -->
-            <a href="/zh{{ false ? '?set_language=zh' : '' }}">
+            <a href="/zh">
               <img
                 src="//www.deepin.org/wp-content/plugins/qtranslate-x/flags/cn.png"
                 alt="中文"
@@ -31,7 +39,7 @@
             </a>
           </li>
           <li>
-            <a href="/en{{ false ? '?set_language=en' : '' }}">
+            <a href="/en">
               <img
                 src="//www.deepin.org/wp-content/plugins/qtranslate-x/flags/gb.png"
                 alt="English"
@@ -44,6 +52,7 @@
     </d-header>
     <div style="height: 1000px">
       <img
+        width="100%"
         src="https://www-pre.deepin.org/index/assets/imgs/banner_1920.webp"
       />
     </div>

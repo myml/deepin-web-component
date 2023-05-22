@@ -1,0 +1,145 @@
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+.d-menu-li {
+  line-height: var(--header-height);
+  transition: line-height 0.3s ease;
+  position: relative;
+
+  & > a {
+    color: #dedede;
+    transition: color 0.3s ease;
+    transition-delay: 0.1s;
+    padding: 0 15px;
+    // 链接的下划线
+    &:before {
+      content: " ";
+      position: absolute;
+      top: 80%;
+      left: 100%;
+      right: 100%;
+      border-bottom: 2px solid #2ca7f8;
+      transition: all 0.3s ease;
+    }
+  }
+  &:hover,
+  &.hover {
+    > a:before {
+      left: 15px;
+      right: 15px;
+    }
+    .d-sub-menu {
+      max-height: 500px;
+      overflow: auto;
+    }
+  }
+}
+
+// level 2 menu
+.d-sub-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: #f6f6f6;
+  min-width: 200px;
+  box-shadow: 0 2px 6px #0003;
+  z-index: 9;
+  max-height: 0px;
+  transition: max-height 0.3s ease;
+  transition-delay: 0.1s;
+  overflow: hidden;
+  & > li {
+    line-height: 15px;
+    padding: 10px 15px;
+    float: none;
+    border-bottom: 1px solid #f0f0f0;
+    height: auto;
+    & > a {
+      background: 0 0;
+      touch-action: manipulation;
+      background-color: transparent;
+      color: #444;
+    }
+    &:hover,
+    &:focus {
+      & > a {
+        color: #2ca7f8;
+      }
+      .d-child-menu {
+        max-height: 500px;
+      }
+    }
+  }
+}
+
+// level 3 menu
+.d-child-menu {
+  margin-top: 5px;
+  max-height: 0px;
+  transition: max-height 0.3s ease;
+  transition-delay: 0.3s;
+  overflow: hidden;
+  & > li {
+    line-height: 15px;
+    padding: 10px 15px;
+    float: none;
+    border-bottom: 1px solid #f0f0f0;
+    height: auto;
+    & > a {
+      background: 0 0;
+      touch-action: manipulation;
+      background-color: transparent;
+      color: #444;
+      &:hover {
+        color: #2ca7f8;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .d-menu-li {
+    line-height: 40px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    .d-sub-menu {
+      position: unset;
+    }
+    // 隐藏下划线
+    a:before {
+      display: none;
+    }
+    .vaild-link {
+      color: #2ca7f8;
+    }
+    // 展开按钮
+    .d-sub-menu-btn {
+      &:after {
+        content: "▶";
+        display: block;
+        transition: transform 0.3s;
+        font-size: 0.6rem;
+      }
+      width: 40px;
+      position: absolute;
+      right: 1rem;
+      top: 0;
+      color: white;
+      font-size: 1.5rem;
+    }
+    // 隐藏展开按钮
+    &.hover {
+      .d-sub-menu-btn:after {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

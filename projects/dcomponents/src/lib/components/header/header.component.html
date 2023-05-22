@@ -1,5 +1,6 @@
-<div class="d-header-nav" [class.top]="top$ | async">
+<div class="d-header-nav">
   <div class="d-new-wrap hh">
+    <!-- Login -->
     <div class="d-logo">
       <a href="https://www.deepin.org">
         <img
@@ -10,28 +11,58 @@
           title="www.deepin.org"
         />
       </a>
-      <div class="d-toggle-menu" (click)="phoneShowMenu()">
+      <div class="d-toggle-menu" (click)="phoneMenuClick()">
         <span></span>
       </div>
     </div>
-    <ul class="d-menu" [class.phone-show]="phoneMenuShow$ | async">
-      <ng-container *ngFor="let item of menu$ | async; index as index">
+    <!-- Menu -->
+    <ul class="d-menu" [class.phone-show]="phoneMenuShow">
+      <ng-container *ngFor="let item of _menu; index as index">
         <li
-          [class.has-sub-menu]="item.children.length"
-          [class.is-link]="item.url"
-          [class.hover]="(showSubMenuIndex$ | async) === index"
-          (click)="menuMouseenter(index)"
+          #menuRef
+          class="d-menu-li"
+          [class.has-sub-menu]="item.children?.length"
         >
-          <a [attr.href]="item.url || null">
+          <a [class.vaild-link]="item.url" [attr.href]="item.url || null">
             <span>{{ item.name }}</span>
           </a>
+          <div
+            class="d-sub-menu-btn"
+            *ngIf="item.children?.length"
+            (click)="menuRef.classList.toggle('hover')"
+          ></div>
           <ul class="d-sub-menu">
-            <ng-container *ngFor="let child of item.children">
+            <ng-container *ngFor="let sub of item.children">
               <li>
-                <a [attr.href]="child.url || null">
-                  <span>{{ child.name }}</span>
+                <a
+                  [class.vaild-link]="sub.url"
+                  [attr.href]="sub.url || null"
+                  tabindex="-1"
+                >
+                  <span>{{ sub.name }}</span>
                 </a>
+                <ul class="d-child-menu" *ngIf="sub.children">
+                  <ng-container *ngFor="let child of sub.children">
+                    <li>
+                      <a [attr.href]="child.url || null">
+                        <span>{{ child.name }}</span>
+                      </a>
+                    </li>
+                  </ng-container>
+                </ul>
               </li>
+              <ng-container *ngIf="phoneMenuShow">
+                <ng-container *ngFor="let child of sub.children">
+                  <li>
+                    <a
+                      [class.vaild-link]="child.url"
+                      [attr.href]="child.url || null"
+                    >
+                      <span>{{ child.name }}</span>
+                    </a>
+                  </li>
+                </ng-container>
+              </ng-container>
             </ng-container>
           </ul>
         </li>

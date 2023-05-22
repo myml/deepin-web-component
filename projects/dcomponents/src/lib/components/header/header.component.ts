@@ -1,6 +1,6 @@
 import {
+  ChangeDetectorRef,
   Component,
-  ElementRef,
   HostBinding,
   Input,
   OnChanges,
@@ -9,17 +9,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {
-  BehaviorSubject,
-  first,
-  firstValueFrom,
-  fromEvent,
-  map,
-  of,
-  shareReplay,
-  startWith,
-  switchMap,
-} from 'rxjs';
+import { shareReplay } from 'rxjs';
 
 import menuZH from './menu_zh.json';
 import menuEN from './menu_en.json';
@@ -31,97 +21,73 @@ import menuEN from './menu_en.json';
   encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class HeaderComponent implements OnInit, OnChanges {
-  constructor(private el: ElementRef<HTMLElement>, private http: HttpClient) {}
-  phone_show = false;
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
   icon = 'https://bbs.deepin.org/assets/image/pc/deepin-logo.svg';
+  // 当前显示语言
   @Input() lang = 'zh';
+  // 菜单配置传入，由于web-component无法传递对象，这里接收Menu[]序列化的json字符串
   @Input() menu?: string;
-  @Input() blend = false;
+  // 是否将传入的菜单配置追加到内置菜单配置中，默认是覆盖内置的配置
+  @Input() append = false;
   @HostBinding('class') class = 'd-header';
   // 菜单是否显示
-  phoneMenuShow$ = new BehaviorSubject(false);
-  // 子菜单是否显示
-  showSubMenuIndex$ = new BehaviorSubject(-1);
-  // 滚动条是否在顶部
-  top$ = of(false);
+  phoneMenuShow = false;
+  // 菜单配置
+  _menu = this.defaultData;
+  // 远程菜单配置
+  remoteMenuZH = this.http
+    .get<{ menu: Menu[] }>(this.getRemoteURL('zh'))
+    .pipe(shareReplay({ bufferSize: 1, refCount: true }));
+  remoteMenuEN = this.http
+    .get<{ menu: Menu[] }>(this.getRemoteURL('en'))
+    .pipe(shareReplay({ bufferSize: 1, refCount: true }));
 
-  refreshMenu$ = new BehaviorSubject('');
-  menu$ = this.createMenuObs();
-  _menu?: Menu[];
   ngOnInit(): void {
-    this.el.nativeElement.style.setProperty(
-      '--header-height',
-      'var(--d-header-height, 64px)'
-    );
-    this.refreshMenu$.next('');
+    this.updateMenu();
   }
   ngOnChanges(changes: SimpleChanges): void {
-    this.refreshMenu$.next('');
+    this.updateMenu();
   }
+
   get isZH() {
     return this.lang.startsWith('zh');
   }
   get defaultData(): Menu[] {
     return this.isZH ? menuZH.menu : menuEN.menu;
   }
-  createMenuObs() {
-    return this.refreshMenu$.pipe(
-      switchMap(() => {
-        // 使用Input
-        if (this.menu) {
-          return of(JSON.parse(this.menu) as Menu[]).pipe(
-            startWith(this.defaultData)
-          );
-        }
-        // 使用远程值
-        const lang = this.isZH ? 'zh' : 'en';
-        const url = `https://www.deepin.org/index/src/assets/docs/${lang}/deepin-web-component/header/menu_${lang}.json`;
-        return this.http.get<{ menu: Menu[] }>(url).pipe(
-          map((data) => {
-            return data?.menu?.length ? data.menu : this.defaultData;
-          }),
-          startWith(this.defaultData)
-        );
-      }),
-      shareReplay({ refCount: true, bufferSize: 1 })
-    );
-  }
-  async menuMouseenter(i: number) {
-    const index = await firstValueFrom(this.showSubMenuIndex$.pipe(first()));
-    console.log(index, i);
-    this.showSubMenuIndex$.next(index === i ? -1 : i);
-  }
-  async phoneShowMenu() {
-    const show = await firstValueFrom(this.phoneMenuShow$);
-    this.showSubMenuIndex$.next(-1);
-    this.phoneMenuShow$.next(!show);
+
+  getRemoteURL(lang: string) {
+    return `https://www.deepin.org/index/src/assets/docs/${lang}/deepin-web-component/header/menu_${lang}.json`;
   }
 
-  // 判断滚动条是否在顶部，并添加class到元素
-  // web component的HostBinding有些问题，手动控制class
-  isTop() {
-    return fromEvent(window, 'scroll').pipe(
-      map(() => {
-        const top = document.documentElement.scrollTop < 100;
-        if (top) {
-          this.el.nativeElement.classList.add('top');
-          this.el.nativeElement.style.removeProperty('--header-height');
-        } else {
-          this.el.nativeElement.classList.remove('top');
-          this.el.nativeElement.style.setProperty(
-            '--header-height',
-            'var(--d-header-height, 64px)'
-          );
-        }
-        return top;
-      }),
-      startWith(true)
-    );
+  updateMenu() {
+    const inputMenu: Menu[] = this.menu ? JSON.parse(this.menu) : [];
+
+    // 使用Input
+    if (this.menu && !this.append) {
+      this._menu = inputMenu;
+      this.cdr.detectChanges();
+      return;
+    }
+    // 使用默认值
+    this._menu = [...this.defaultData, ...inputMenu];
+    // 使用远程数据
+    (this.isZH ? this.remoteMenuZH : this.remoteMenuEN).subscribe((data) => {
+      if (data?.menu?.length) {
+        this._menu = [...data.menu, ...inputMenu];
+      }
+      this.cdr.detectChanges();
+    });
+  }
+
+  async phoneMenuClick() {
+    this.phoneMenuShow = !this.phoneMenuShow;
+    this.cdr.detectChanges();
   }
 }
 
 export interface Menu {
   name: string;
   url: string;
-  children: Menu[];
+  children?: Menu[];
 }

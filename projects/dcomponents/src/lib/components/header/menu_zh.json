@@ -140,7 +140,13 @@
         {
           "name": "更多",
           "url": "https://www.deepin.org/index/docs/sig/sig/LISTS",
-          "children": []
+          "children": [
+            {
+              "name": "spark-store-deepin",
+              "url": "https://www.deepin.org/index/docs/sig/sig/spark-store-deepin/README",
+              "children": []
+            }
+          ]
         }
       ]
     },
