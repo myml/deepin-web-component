@@ -1,4 +1,4 @@
-<div class="hs-container" id="footer" *ngIf="data$ | push as dataRef">
+<div class="hs-container" id="footer" *ngIf="data$ | async as dataRef">
   <div class="hs-top-footer">
     <div class="hs-footer" *ngFor="let item of dataRef.navs">
       <span class="footer-title" *ngIf="item.title">

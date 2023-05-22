@@ -1,19 +1,25 @@
-<div class="d-header-nav" [class.top]="top$ | push">
+<div class="d-header-nav" [class.top]="top$ | async">
   <div class="d-new-wrap hh">
     <div class="d-logo">
       <a href="https://www.deepin.org">
-        <img [src]="icon" alt="logo" width="130" height="48" />
+        <img
+          [src]="icon"
+          alt="logo"
+          width="130"
+          height="48"
+          title="www.deepin.org"
+        />
       </a>
       <div class="d-toggle-menu" (click)="phoneShowMenu()">
         <span></span>
       </div>
     </div>
-    <ul class="d-menu" [class.phone-show]="phoneMenuShow$ | push">
-      <ng-container *ngFor="let item of menu$ | push; index as index">
+    <ul class="d-menu" [class.phone-show]="phoneMenuShow$ | async">
+      <ng-container *ngFor="let item of menu$ | async; index as index">
         <li
           [class.has-sub-menu]="item.children.length"
           [class.is-link]="item.url"
-          [class.hover]="(showSubMenuIndex$ | push) === index"
+          [class.hover]="(showSubMenuIndex$ | async) === index"
           (click)="menuMouseenter(index)"
         >
           <a [attr.href]="item.url || null">
