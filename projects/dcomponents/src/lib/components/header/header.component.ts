@@ -72,7 +72,12 @@ export class HeaderComponent implements OnInit, OnChanges {
     // 使用默认值
     this._menu = [...this.defaultData, ...inputMenu];
     // 使用远程数据
+    const oldMenu = this._menu;
     (this.isZH ? this.remoteMenuZH : this.remoteMenuEN).subscribe((data) => {
+      // menu是否已进行了更新
+      if (oldMenu != this._menu) {
+        return;
+      }
       if (data?.menu?.length) {
         this._menu = [...data.menu, ...inputMenu];
       }
