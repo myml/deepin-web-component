@@ -31,6 +31,9 @@ a {
   }
   &:hover,
   &.hover {
+    > .vaild-link {
+      color: #2ca7f8;
+    }
     > a:before {
       left: 15px;
       right: 15px;

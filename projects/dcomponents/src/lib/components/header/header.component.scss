@@ -38,6 +38,23 @@
   img {
     vertical-align: middle;
   }
+  .d-logo-h {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.2s ease;
+  }
+  &:hover {
+    .d-logo-h {
+      width: 150px;
+      height: 30px;
+      opacity: 1;
+    }
+  }
 }
 // level 1 menu
 ul.d-menu {
