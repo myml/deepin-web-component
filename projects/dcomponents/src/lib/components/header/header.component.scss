@@ -38,9 +38,20 @@
   img {
     vertical-align: middle;
   }
+  h1 {
+    font-size: 1rem;
+    color: white;
+  }
+  .d-title {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    position: relative;
+  }
   .d-logo-h {
     display: inline-block;
     position: absolute;
+    top: 0;
     left: 0;
     width: 0;
     height: 0;
@@ -53,6 +64,9 @@
       width: 150px;
       height: 30px;
       opacity: 1;
+    }
+    h1 {
+      color: #2ca7f8;
     }
   }
 }

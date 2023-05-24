@@ -22,7 +22,9 @@ import menuEN from './menu_en.json';
 })
 export class HeaderComponent implements OnInit, OnChanges {
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
-  icon = 'https://bbs.deepin.org/assets/image/pc/deepin-logo.svg';
+  @Input() home = 'www.deepin.org';
+  // Logo旁边的标题
+  @Input() subtitle = '';
   // 当前显示语言
   @Input() lang = 'zh';
   // 菜单配置传入，由于web-component无法传递对象，这里接收Menu[]序列化的json字符串

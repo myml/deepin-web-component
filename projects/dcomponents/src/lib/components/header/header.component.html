@@ -2,20 +2,23 @@
   <div class="d-new-wrap hh">
     <!-- Login -->
     <div class="d-logo">
-      <a href="https://www.deepin.org">
-        <img
-          src="https://storage.deepin.org/thread/202305231042304086_3.png"
-          alt="logo"
-          width="150"
-          title="www.deepin.org"
-        />
-        <div class="d-logo-h">
+      <a href="https://{{ home }}">
+        <div class="d-title">
           <img
-            src="https://storage.deepin.org/thread/202305231040315865_1.png"
+            src="https://storage.deepin.org/thread/202305231042304086_3.png"
             alt="logo"
             width="150"
-            title="www.deepin.org"
+            [title]="home"
           />
+          <div class="d-logo-h">
+            <img
+              src="https://storage.deepin.org/thread/202305231040315865_1.png"
+              alt="logo"
+              width="150"
+              [title]="home"
+            />
+          </div>
+          <h1 *ngIf="subtitle">{{ subtitle }}</h1>
         </div>
       </a>
       <div class="d-toggle-menu" (click)="phoneMenuClick()">
