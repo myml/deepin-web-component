@@ -43,7 +43,7 @@
           ></div>
           <ul class="d-sub-menu">
             <ng-container *ngFor="let sub of item.children">
-              <li>
+              <li [class.has-child-menu]="sub.children?.length">
                 <a
                   [class.vaild-link]="sub.url"
                   [attr.href]="sub.url || null"
