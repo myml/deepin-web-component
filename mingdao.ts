@@ -91,6 +91,13 @@ async function header(params: {
     body: JSON.stringify(body),
   });
   const data = (await resp.json()) as { data: { rows: Row[] } };
+
+  const selectAndOrder = (ids: string[]) => {
+    return data.data.rows
+      .filter((row) => ids.includes(row.rowid))
+      .sort((a, b) => a.sort - b.sort);
+  };
+
   const nav = data.data?.rows
     .filter((row) => row.parent === '[]') // 选取一级菜单
     .sort((a, b) => a.sort - b.sort) // 排序
@@ -100,14 +107,18 @@ async function header(params: {
       return {
         name: row.title,
         url: row.link || '',
-        children: children
-          .map(
-            (id: string) =>
-              data.data.rows.find((row) => row.rowid === id) as Row
-          )
-          .filter((row) => row !== undefined)
-          .sort((a, b) => a.sort - b.sort)
-          .map((row) => ({ name: row.title, url: row.link, children: [] })),
+        children: selectAndOrder(children).map((row) => {
+          const children = JSON.parse(row.children) as string[];
+          return {
+            name: row.title,
+            url: row.link,
+            // 获取子菜单的子菜单
+            children: selectAndOrder(children).map((row) => ({
+              name: row.title,
+              url: row.link,
+            })),
+          };
+        }),
       };
     });
   return nav;

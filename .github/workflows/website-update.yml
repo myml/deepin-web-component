@@ -1,7 +1,5 @@
 name: Website Update
 on:
-  push:
-    branches: [ "master" ]
   workflow_dispatch:
 
 jobs:
@@ -10,21 +8,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
+
       - uses: pnpm/action-setup@v2.2.2
         with:
           version: 6.0.2
-      
+
       - name: Install dependencies
         run: pnpm install
-        
+
       - name: Fetch json
         run: pnpm run gen
         env:
           MD_SERVER: ${{ secrets.MD_SERVER }}
           MD_APP_KEY: ${{ secrets.MD_APP_KEY }}
           MD_APP_SIGN: ${{ secrets.MD_APP_SIGN }}
-        
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           token: ${{ secrets.PAT }}

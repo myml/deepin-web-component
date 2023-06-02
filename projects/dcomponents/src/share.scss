@@ -77,16 +77,21 @@ a {
         font-size: 0.6rem;
         float: right;
       }
-      &:hover > a:after {
-        transform: rotate(90deg);
+      // 改用js事件实现，避免三级菜单自动收回，二级高度发生变化，导致二级菜单也被自动收回
+      // &:hover {
+      &.hover {
+        > a:after {
+          transform: rotate(90deg);
+        }
+
+        > .d-child-menu {
+          max-height: 500px;
+        }
       }
     }
     &:hover {
       & > a {
         color: #2ca7f8;
-      }
-      .d-child-menu {
-        max-height: 500px;
       }
     }
   }

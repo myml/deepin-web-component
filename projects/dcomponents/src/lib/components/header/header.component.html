@@ -32,6 +32,7 @@
           #menuRef
           class="d-menu-li"
           [class.has-sub-menu]="item.children?.length"
+          (mouseleave)="removeAllHoverClass(menuRef)"
         >
           <a [class.vaild-link]="item.url" [attr.href]="item.url || null">
             <span>{{ item.name }}</span>
@@ -43,7 +44,11 @@
           ></div>
           <ul class="d-sub-menu">
             <ng-container *ngFor="let sub of item.children">
-              <li [class.has-child-menu]="sub.children?.length">
+              <li
+                [class.has-child-menu]="sub.children?.length"
+                #subMenuRef
+                (mouseenter)="subMenuRef.classList.add('hover')"
+              >
                 <a
                   [class.vaild-link]="sub.url"
                   [attr.href]="sub.url || null"

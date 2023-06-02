@@ -86,8 +86,10 @@ export class HeaderComponent implements OnInit, OnChanges {
       this.cdr.detectChanges();
     });
   }
-
-  async phoneMenuClick() {
+  removeAllHoverClass(el: HTMLElement) {
+    el.querySelectorAll('.hover').forEach((el) => el.classList.remove('hover'));
+  }
+  phoneMenuClick() {
     this.phoneMenuShow = !this.phoneMenuShow;
     this.cdr.detectChanges();
   }
