@@ -73,6 +73,7 @@ export class HeaderComponent implements OnInit, OnChanges {
     }
     // 使用默认值
     this._menu = [...this.defaultData, ...inputMenu];
+    return;
     // 使用远程数据
     const oldMenu = this._menu;
     (this.isZH ? this.remoteMenuZH : this.remoteMenuEN).subscribe((data) => {
@@ -86,9 +87,33 @@ export class HeaderComponent implements OnInit, OnChanges {
       this.cdr.detectChanges();
     });
   }
-  removeAllHoverClass(el: HTMLElement) {
-    el.querySelectorAll('.hover').forEach((el) => el.classList.remove('hover'));
+
+  // 三级菜单需要鼠标悬浮显示，鼠标离开也不收回
+  // 悬浮需要延迟一小段时间，避免鼠标划过也展开
+  _hoverCache = new Map<HTMLElement, any>();
+  childHover(el: HTMLElement, hover: boolean) {
+    if (hover) {
+      const interval = setTimeout(() => {
+        el.classList.add('hover');
+      }, 150);
+      this._hoverCache.set(el, interval);
+    } else {
+      const interval = this._hoverCache.get(el);
+      if (interval) {
+        clearInterval(interval);
+      }
+    }
   }
+  // 二级菜单收回时，再收回三级菜单
+  removeAllHoverClass(el: HTMLElement) {
+    setTimeout(() => {
+      el.querySelectorAll('.hover').forEach((el) =>
+        el.classList.remove('hover')
+      );
+    }, 300);
+  }
+
+  // 手机端需要点击才会显示菜单
   phoneMenuClick() {
     this.phoneMenuShow = !this.phoneMenuShow;
     this.cdr.detectChanges();

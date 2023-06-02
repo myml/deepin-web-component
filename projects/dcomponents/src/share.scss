@@ -29,9 +29,10 @@ a {
       transition: all 0.3s ease;
     }
   }
-  &:hover,
+
   &.hover {
-    > .vaild-link {
+    > .vaild-link,
+    > .valid-link {
       color: #2ca7f8;
     }
     > a:before {
@@ -40,7 +41,21 @@ a {
     }
     .d-sub-menu {
       max-height: 500px;
-      overflow: auto;
+    }
+  }
+  &:hover {
+    @media (any-hover: hover) {
+      > .vaild-link,
+      > .valid-link {
+        color: #2ca7f8;
+      }
+      > a:before {
+        left: 15px;
+        right: 15px;
+      }
+      .d-sub-menu {
+        max-height: 800px;
+      }
     }
   }
 }
@@ -73,14 +88,16 @@ a {
     &.has-child-menu {
       & > a:after {
         content: "▶";
-        transition: transform 0.4s ease;
+        transition: all 0.4s ease;
         font-size: 0.6rem;
         float: right;
+        opacity: 1;
       }
       // 改用js事件实现，避免三级菜单自动收回，二级高度发生变化，导致二级菜单也被自动收回
       // &:hover {
       &.hover {
         > a:after {
+          opacity: 0;
           transform: rotate(90deg);
         }
 
@@ -89,7 +106,7 @@ a {
         }
       }
     }
-    &:hover {
+    &:not(.has-child-menu):hover {
       & > a {
         color: #2ca7f8;
       }
@@ -128,14 +145,21 @@ a {
     width: 100%;
     text-align: center;
     border-bottom: 1px solid #f0f0f0;
+    // 旋转展开按钮
+    &.hover {
+      .d-sub-menu-btn:after {
+        transform: rotate(90deg);
+      }
+    }
     .d-sub-menu {
       position: unset;
       // 手机端默认展开二级菜单，隐藏展开标识
-      > li {
-        &.has-child-menu {
-          & > a:after {
-            display: none;
-          }
+      > li.has-child-menu {
+        position: relative;
+        a:after {
+          float: none;
+          position: absolute;
+          margin-left: 0.5rem;
         }
       }
     }
@@ -143,7 +167,9 @@ a {
     a:before {
       display: none;
     }
-    .vaild-link {
+    // 由于之前有错别字，修复后短时间做兼容
+    .vaild-link,
+    .valid-link {
       color: #2ca7f8;
     }
     // 展开按钮
@@ -161,12 +187,6 @@ a {
       top: 0;
       color: white;
       font-size: 1.5rem;
-    }
-    // 隐藏展开按钮
-    &.hover {
-      .d-sub-menu-btn:after {
-        transform: rotate(90deg);
-      }
     }
   }
 }

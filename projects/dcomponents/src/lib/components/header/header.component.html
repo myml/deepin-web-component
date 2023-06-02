@@ -40,14 +40,18 @@
           <div
             class="d-sub-menu-btn"
             *ngIf="item.children?.length"
-            (click)="menuRef.classList.toggle('hover')"
+            (click)="
+              menuRef.classList.toggle('hover'); removeAllHoverClass(menuRef)
+            "
           ></div>
           <ul class="d-sub-menu">
             <ng-container *ngFor="let sub of item.children">
               <li
                 [class.has-child-menu]="sub.children?.length"
                 #subMenuRef
-                (mouseenter)="subMenuRef.classList.add('hover')"
+                (click)="childHover(subMenuRef, true)"
+                (mouseenter)="childHover(subMenuRef, true)"
+                (mouseleave)="childHover(subMenuRef, false)"
               >
                 <a
                   [class.vaild-link]="sub.url"
@@ -59,25 +63,16 @@
                 <ul class="d-child-menu" *ngIf="sub.children">
                   <ng-container *ngFor="let child of sub.children">
                     <li>
-                      <a [attr.href]="child.url || null">
+                      <a
+                        [class.vaild-link]="child.url"
+                        [attr.href]="child.url || null"
+                      >
                         <span>{{ child.name }}</span>
                       </a>
                     </li>
                   </ng-container>
                 </ul>
               </li>
-              <ng-container *ngIf="phoneMenuShow">
-                <ng-container *ngFor="let child of sub.children">
-                  <li>
-                    <a
-                      [class.vaild-link]="child.url"
-                      [attr.href]="child.url || null"
-                    >
-                      <span>{{ child.name }}</span>
-                    </a>
-                  </li>
-                </ng-container>
-              </ng-container>
             </ng-container>
           </ul>
         </li>
