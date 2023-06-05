@@ -6,11 +6,6 @@
       "children": []
     },
     {
-      "name": "新闻",
-      "url": "https://www.deepin.org/zh/community-news/",
-      "children": []
-    },
-    {
       "name": "下载和帮助",
       "url": "",
       "children": [
@@ -30,16 +25,26 @@
           "children": []
         },
         {
-          "name": "Wiki",
-          "url": "https://wiki.deepin.org/zh/home",
-          "children": []
-        },
-        {
           "name": "跨端协同",
           "url": "https://www.deepin.org/index/assistant",
           "children": []
+        },
+        {
+          "name": "版本规划",
+          "url": "https://www.deepin.org/zh/developer-community/planning/",
+          "children": []
         }
       ]
+    },
+    {
+      "name": "新闻",
+      "url": "https://www.deepin.org/zh/community-news/",
+      "children": []
+    },
+    {
+      "name": "WIKI",
+      "url": "https://wiki.deepin.org/zh/home",
+      "children": []
     },
     {
       "name": "社区",
@@ -51,49 +56,8 @@
           "children": []
         },
         {
-          "name": "参与我们",
-          "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/参与我们",
-          "children": []
-        },
-        {
           "name": "交流方式",
           "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/交流方式",
-          "children": []
-        },
-        {
-          "name": "行为准则",
-          "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/行为准则",
-          "children": []
-        }
-      ]
-    },
-    {
-      "name": "开发者",
-      "url": "https://docs.deepin.org",
-      "children": [
-        {
-          "name": "贡献看板",
-          "url": "https://www.deepin.org/index/datastat",
-          "children": []
-        },
-        {
-          "name": "贡献指南",
-          "url": "https://www.deepin.org/index/docs/wiki/05_HOW-TO/06_参与deepin贡献相关/参与贡献.md",
-          "children": []
-        },
-        {
-          "name": "文档",
-          "url": "https://docs.deepin.org/",
-          "children": []
-        },
-        {
-          "name": "源码",
-          "url": "https://github.com/linuxdeepin",
-          "children": []
-        },
-        {
-          "name": "邮件列表",
-          "url": "https://www.freelists.org/list/deepin-devel",
           "children": []
         },
         {
@@ -102,44 +66,89 @@
           "children": []
         },
         {
-          "name": "应用投递",
-          "url": "https://shimo.im/forms/rPw9rRcKV6WkVdrY/fill",
-          "children": []
+          "name": "SIG",
+          "url": "",
+          "children": [
+            {
+              "name": "创建和管理指南",
+              "url": "https://www.deepin.org/index/docs/sig/sig/README.zh_CN"
+            },
+            {
+              "name": "deepin-riscv64",
+              "url": "https://www.deepin.org/index/docs/sig/sig/deepin-riscv64/README"
+            },
+            {
+              "name": "deepin-testsig",
+              "url": "https://www.deepin.org/index/docs/sig/sig/deepin-testsig/README"
+            },
+            {
+              "name": "deepin-m1",
+              "url": "https://www.deepin.org/index/docs/sig/sig/deepin-m1/README"
+            },
+            {
+              "name": "spark-store-deepin",
+              "url": "https://www.deepin.org/index/docs/sig/sig/spark-store-deepin/README"
+            },
+            {
+              "name": "更多",
+              "url": "https://www.deepin.org/index/docs/sig/sig/LISTS"
+            }
+          ]
         }
       ]
     },
     {
-      "name": "SIG",
+      "name": "贡献",
       "url": "",
       "children": [
         {
-          "name": "创建和管理指南",
-          "url": "https://www.deepin.org/index/docs/sig/sig/README.zh_CN",
+          "name": "贡献指引",
+          "url": "",
+          "children": [
+            {
+              "name": "行为准则",
+              "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/行为准则"
+            },
+            {
+              "name": "参与我们",
+              "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/参与我们"
+            },
+            {
+              "name": "开发者文档",
+              "url": "https://docs.deepin.org/"
+            }
+          ]
+        },
+        {
+          "name": "参与贡献",
+          "url": "",
+          "children": [
+            {
+              "name": "开发",
+              "url": "https://www.deepin.org/index/docs/wiki/05_HOW-TO/06_参与deepin贡献相关/参与贡献.md"
+            },
+            {
+              "name": "Issues",
+              "url": "https://github.com/linuxdeepin/developer-center/issues"
+            },
+            {
+              "name": "国际化",
+              "url": "https://www.deepin.org/developer-community/internationalization/"
+            },
+            {
+              "name": "应用投递",
+              "url": "https://shimo.im/forms/rPw9rRcKV6WkVdrY/fill"
+            }
+          ]
+        },
+        {
+          "name": "贡献看板",
+          "url": "https://www.deepin.org/index/datastat",
           "children": []
         },
         {
-          "name": "deepin-riscv64",
-          "url": "https://www.deepin.org/index/docs/sig/sig/deepin-riscv64/README",
-          "children": []
-        },
-        {
-          "name": "deepin-testsig",
-          "url": "https://www.deepin.org/index/docs/sig/sig/deepin-testsig/README",
-          "children": []
-        },
-        {
-          "name": "deepin-m1",
-          "url": "https://www.deepin.org/index/docs/sig/sig/deepin-m1/README",
-          "children": []
-        },
-        {
-          "name": "spark-store-deepin",
-          "url": "https://www.deepin.org/index/docs/sig/sig/spark-store-deepin/README",
-          "children": []
-        },
-        {
-          "name": "更多",
-          "url": "https://www.deepin.org/index/docs/sig/sig/LISTS",
+          "name": "邮件列表",
+          "url": "https://www.freelists.org/list/deepin-devel",
           "children": []
         }
       ]
@@ -147,6 +156,11 @@
     {
       "name": "论坛",
       "url": "https://bbs.deepin.org",
+      "children": []
+    },
+    {
+      "name": "博客",
+      "url": "https://blog.deepin.org",
       "children": []
     }
   ]

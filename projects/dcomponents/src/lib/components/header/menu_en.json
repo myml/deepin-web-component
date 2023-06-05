@@ -51,13 +51,13 @@
           "children": []
         },
         {
-          "name": "Mailing List",
-          "url": "https://www.freelists.org/list/deepin-devel",
+          "name": "Upstream Contributions",
+          "url": "https://www.deepin.org/index/docs/developer-center/upstream-contributions/README",
           "children": []
         },
         {
-          "name": "Upstream Contributions",
-          "url": "https://www.deepin.org/index/docs/developer-center/upstream-contributions/README",
+          "name": "Mailing List",
+          "url": "https://www.freelists.org/list/deepin-devel",
           "children": []
         }
       ]
