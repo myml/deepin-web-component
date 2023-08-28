@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import {
+  ChangeDetectorRef,
   Component,
   HostBinding,
   Input,
@@ -14,6 +15,7 @@ import {
   shareReplay,
   startWith,
   switchMap,
+  tap,
 } from 'rxjs';
 
 import navEN from './nav_en.json';
@@ -25,7 +27,7 @@ import navZH from './nav_zh.json';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit, OnChanges {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
   @HostBinding('class') class = 'd-footer';
   @Input() lang: 'zh' | 'en' = 'zh';
   @Input() data!: string;
@@ -62,6 +64,9 @@ export class FooterComponent implements OnInit, OnChanges {
           }),
           startWith(this.defaultData)
         );
+      }),
+      tap(() => {
+        setTimeout(() => this.cdr.detectChanges());
       }),
       shareReplay({ refCount: true, bufferSize: 1 })
     );
