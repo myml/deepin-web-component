@@ -94,6 +94,11 @@
               "url": "https://www.deepin.org/index/docs/sig/sig/LISTS"
             }
           ]
+        },
+        {
+          "name": "活动",
+          "url": "https://www.deepin.org/community-events/",
+          "children": []
         }
       ]
     },
