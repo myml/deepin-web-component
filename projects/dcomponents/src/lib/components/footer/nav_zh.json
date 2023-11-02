@@ -67,6 +67,11 @@
         "text": "关注社区微信公众号",
         "url": "",
         "img": "https://bbs.deepin.org/assets/contact/wx.png"
+      },
+      {
+        "text": "论坛微信小程序",
+        "url": "",
+        "img": "https://www.deepin.org/wp-content/uploads/2023/11/deepin小程序码.png"
       }
     ]
   }
