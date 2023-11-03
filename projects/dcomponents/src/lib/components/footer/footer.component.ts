@@ -36,6 +36,9 @@ export class FooterComponent implements OnInit, OnChanges {
   refreshData$ = new BehaviorSubject('');
   data$ = this.createDataObs();
 
+  remoteZh$ = this.remoteData('zh');
+  remoteEn$ = this.remoteData('en');
+
   ngOnInit(): void {
     this.refreshData$.next('');
   }
@@ -51,17 +54,18 @@ export class FooterComponent implements OnInit, OnChanges {
   createDataObs() {
     return this.refreshData$.pipe(
       switchMap(() => {
+        // 如果传入了data，使用传入的值，
         if (this.data) {
           return of(JSON.parse(this.data) as DataModule).pipe(
             startWith(this.defaultData)
           );
         }
-        const lang = this.isZH ? 'zh' : 'en';
-        const url = `https://www.deepin.org/index/src/assets/docs/${lang}/deepin-web-component/footer/nav_${lang}.json`;
-        return this.http.get<DataModule>(url).pipe(
+        // 使用远程的值
+        return (this.isZH ? this.remoteZh$ : this.remoteEn$).pipe(
           map((data) => {
             return data?.navs?.length ? data : this.defaultData;
           }),
+          // 最开始显示默认的值
           startWith(this.defaultData)
         );
       }),
@@ -70,6 +74,10 @@ export class FooterComponent implements OnInit, OnChanges {
       }),
       shareReplay({ refCount: true, bufferSize: 1 })
     );
+  }
+  remoteData(lang: string) {
+    const url = `https://www.deepin.org/index/src/assets/docs/${lang}/deepin-web-component/footer/nav_${lang}.json`;
+    return this.http.get<DataModule>(url);
   }
 }
 
