@@ -25,8 +25,8 @@
           "children": []
         },
         {
-          "name": "跨端协同",
-          "url": "https://www.deepin.org/index/assistant",
+          "name": "入门指南",
+          "url": "https://space.bilibili.com/137324885/channel/seriesdetail?sid=1731028",
           "children": []
         },
         {
@@ -51,13 +51,13 @@
       "url": "",
       "children": [
         {
-          "name": "概述",
+          "name": "关于社区",
           "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/关于社区",
           "children": []
         },
         {
-          "name": "交流方式",
-          "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/交流方式",
+          "name": "行为准则",
+          "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/行为准则",
           "children": []
         },
         {
@@ -66,7 +66,33 @@
           "children": []
         },
         {
-          "name": "SIG",
+          "name": "社区产品",
+          "url": "",
+          "children": [
+            {
+              "name": "深度桌面环境",
+              "url": "https://www.deepin.org/zh/dde/"
+            },
+            {
+              "name": "深度桌面移植",
+              "url": "https://www.deepin.org/zh/dde/desktop-transplantation/"
+            },
+            {
+              "name": "深度原创应用",
+              "url": "https://www.deepin.org/zh/original/deepin-boot-maker/"
+            },
+            {
+              "name": "玲珑",
+              "url": "https://linglong.dev/"
+            },
+            {
+              "name": "跨端协同",
+              "url": "https://www.deepin.org/index/assistant"
+            }
+          ]
+        },
+        {
+          "name": "找到SIG组",
           "url": "",
           "children": [
             {
@@ -74,16 +100,16 @@
               "url": "https://www.deepin.org/index/docs/sig/sig/README.zh_CN"
             },
             {
-              "name": "deepin-riscv64",
-              "url": "https://www.deepin.org/index/docs/sig/sig/deepin-riscv64/README"
+              "name": "deepin-ports",
+              "url": "https://www.deepin.org/index/docs/sig/sig/deepin-ports/README.md"
             },
             {
               "name": "deepin-testsig",
               "url": "https://www.deepin.org/index/docs/sig/sig/deepin-testsig/README"
             },
             {
-              "name": "deepin-m1",
-              "url": "https://www.deepin.org/index/docs/sig/sig/deepin-m1/README"
+              "name": "deepin-wiki",
+              "url": "https://www.deepin.org/index/docs/sig/sig/deepin-wiki/README.md"
             },
             {
               "name": "spark-store-deepin",
@@ -99,6 +125,11 @@
           "name": "活动",
           "url": "https://www.deepin.org/community-events/",
           "children": []
+        },
+        {
+          "name": "联系社区",
+          "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/交流方式",
+          "children": []
         }
       ]
     },
@@ -111,40 +142,37 @@
           "url": "",
           "children": [
             {
-              "name": "行为准则",
-              "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/行为准则"
-            },
-            {
-              "name": "参与我们",
+              "name": "参与社区",
               "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/参与我们"
             },
             {
-              "name": "开发者文档",
-              "url": "https://docs.deepin.org/"
-            }
-          ]
-        },
-        {
-          "name": "参与贡献",
-          "url": "",
-          "children": [
-            {
-              "name": "开发",
-              "url": "https://www.deepin.org/index/docs/wiki/05_HOW-TO/06_参与deepin贡献相关/参与贡献.md"
+              "name": "贡献代码",
+              "url": "https://wiki.deepin.org/zh/05_HOW-TO/06_参与deepin贡献相关/如何贡献代码"
             },
             {
-              "name": "Issues",
-              "url": "https://github.com/linuxdeepin/developer-center/issues"
+              "name": "贡献文档",
+              "url": "https://wiki.deepin.org/zh/05_HOW-TO/06_参与deepin贡献相关/如何贡献文档"
             },
             {
               "name": "国际化",
               "url": "https://www.deepin.org/developer-community/internationalization/"
-            },
-            {
-              "name": "应用投递",
-              "url": "https://doc.chinauos.com/content/L7nFinQB_uwzIp6HNV7S"
             }
           ]
+        },
+        {
+          "name": "应用投递",
+          "url": "https://doc.chinauos.com/content/L7nFinQB_uwzIp6HNV7S",
+          "children": []
+        },
+        {
+          "name": "Issues",
+          "url": "https://github.com/linuxdeepin/developer-center/issues",
+          "children": []
+        },
+        {
+          "name": "开发者文档",
+          "url": "https://docs.deepin.org/",
+          "children": []
         },
         {
           "name": "贡献看板",
@@ -152,7 +180,7 @@
           "children": []
         },
         {
-          "name": "邮件列表",
+          "name": "邮件订阅",
           "url": "https://www.freelists.org/list/deepin-devel",
           "children": []
         }
