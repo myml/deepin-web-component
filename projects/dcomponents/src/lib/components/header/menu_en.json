@@ -59,6 +59,11 @@
           "name": "Mailing List",
           "url": "https://www.freelists.org/list/deepin-devel",
           "children": []
+        },
+        {
+          "name": "App Delivery",
+          "url": "https://appdelivery.deepin.org.cn/",
+          "children": []
         }
       ]
     },
