@@ -1,7 +1,7 @@
 {
   "navs": [
     {
-      "title": "About Deepin",
+      "title": "About deepin",
       "links": [
         {
           "text": "About Us",
@@ -14,6 +14,10 @@
         {
           "text": "Terms of Service",
           "url": "https://www.deepin.org/agreement"
+        },
+        {
+          "text": "Follow deepin",
+          "url": "https://distrowatch.com/table.php?distribution=deepin"
         }
       ]
     },

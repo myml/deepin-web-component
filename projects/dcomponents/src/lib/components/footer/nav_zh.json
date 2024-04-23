@@ -1,7 +1,7 @@
 {
   "navs": [
     {
-      "title": "关于Deepin",
+      "title": "关于deepin",
       "links": [
         {
           "text": "关于我们",
@@ -14,6 +14,10 @@
         {
           "text": "条款协议",
           "url": "https://www.deepin.org/zh/agreement"
+        },
+        {
+          "text": "国际排名",
+          "url": "https://distrowatch.com/table.php?distribution=deepin"
         }
       ]
     },
