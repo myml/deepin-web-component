@@ -37,12 +37,38 @@
       ]
     },
     {
+      "name": "Community",
+      "url": "",
+      "children": [
+        {
+          "name": "About Community",
+          "url": "https://www.deepin.org/about-deepin-community/",
+          "children": []
+        },
+        {
+          "name": "CCoC",
+          "url": "https://www.deepin.org/en/community-code-of-conduct/",
+          "children": []
+        },
+        {
+          "name": "Upstream Contributes",
+          "url": "https://www.deepin.org/en/the-deepin-community-contributes-to-upstream/",
+          "children": []
+        }
+      ]
+    },
+    {
       "name": "DEVELOPER",
       "url": "",
       "children": [
         {
           "name": "Documents",
           "url": "https://docs.deepin.org/",
+          "children": []
+        },
+        {
+          "name": "Contribute Code",
+          "url": "https://wiki.deepin.org/en/About_Deepin/contribute_code",
           "children": []
         },
         {

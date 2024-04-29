@@ -52,12 +52,12 @@
       "children": [
         {
           "name": "关于社区",
-          "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/关于社区",
+          "url": "https://www.deepin.org/zh/about-deepin-community/",
           "children": []
         },
         {
           "name": "行为准则",
-          "url": "https://www.deepin.org/index/docs/wiki/06_关于Deepin/Deepin社区/行为准则",
+          "url": "https://www.deepin.org/zh/community-code-of-conduct/",
           "children": []
         },
         {
