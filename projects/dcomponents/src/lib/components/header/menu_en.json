@@ -54,6 +54,11 @@
           "name": "Upstream Contributes",
           "url": "https://www.deepin.org/en/the-deepin-community-contributes-to-upstream/",
           "children": []
+        },
+        {
+          "name": "Contact Community",
+          "url": "https://www.deepin.org/index/docs/wiki/en/06_%E5%85%B3%E4%BA%8EDeepin/Deepin%E7%A4%BE%E5%8C%BA/%E4%BA%A4%E6%B5%81%E6%96%B9%E5%BC%8F",
+          "children": []
         }
       ]
     },
@@ -75,6 +80,20 @@
           "name": "Source Code",
           "url": "https://github.com/linuxdeepin",
           "children": []
+        },
+        {
+          "name": "SIG",
+          "url": "",
+          "children": [
+            {
+              "name": "SIG Setup",
+              "url": "https://www.deepin.org/index/docs/sig/sig/README.md"
+            },
+            {
+              "name": "deepin-wiki",
+              "url": "https://www.deepin.org/index/docs/sig/sig/deepin-wiki/README.en.md"
+            }
+          ]
         },
         {
           "name": "Upstream Contributions",
