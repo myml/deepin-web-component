@@ -52,12 +52,12 @@
         },
         {
           "name": "Upstream Contributes",
-          "url": "https://www.deepin.org/en/the-deepin-community-contributes-to-upstream/",
+          "url": "https://www.deepin.org/index/en/docs/developer-center/upstream-contributions/README",
           "children": []
         },
         {
           "name": "Contact Community",
-          "url": "https://www.deepin.org/index/docs/wiki/en/06_%E5%85%B3%E4%BA%8EDeepin/Deepin%E7%A4%BE%E5%8C%BA/%E4%BA%A4%E6%B5%81%E6%96%B9%E5%BC%8F",
+          "url": "https://www.deepin.org/index/en/docs/wiki/en/06_关于Deepin/Deepin社区/交流方式",
           "children": []
         }
       ]
@@ -73,7 +73,7 @@
         },
         {
           "name": "Contribute Code",
-          "url": "https://wiki.deepin.org/en/About_Deepin/contribute_code",
+          "url": "https://www.deepin.org/index/en/docs/wiki/en/About_Deepin/contribute_code",
           "children": []
         },
         {
@@ -87,18 +87,13 @@
           "children": [
             {
               "name": "SIG Setup",
-              "url": "https://www.deepin.org/index/docs/sig/sig/README.md"
+              "url": "https://www.deepin.org/index/en/docs/sig/sig/README"
             },
             {
               "name": "deepin-wiki",
-              "url": "https://www.deepin.org/index/docs/sig/sig/deepin-wiki/README.en.md"
+              "url": "https://www.deepin.org/index/en/docs/sig/sig/deepin-wiki/README"
             }
           ]
-        },
-        {
-          "name": "Upstream Contributions",
-          "url": "https://www.deepin.org/index/docs/developer-center/upstream-contributions/README",
-          "children": []
         },
         {
           "name": "Mailing List",
