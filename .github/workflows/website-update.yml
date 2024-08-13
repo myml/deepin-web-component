@@ -1,5 +1,6 @@
 name: Website Update
 on:
+  push:
   workflow_dispatch:
 
 jobs:
