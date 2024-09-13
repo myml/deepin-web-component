@@ -33,6 +33,11 @@
           "name": "Wiki",
           "url": "https://wiki.deepin.org/en/home",
           "children": []
+        },
+        {
+          "name": "Product Planning",
+          "url": "https://www.deepin.org/en/developer-community/planning/",
+          "children": []
         }
       ]
     },
