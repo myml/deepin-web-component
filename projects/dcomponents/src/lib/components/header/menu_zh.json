@@ -30,7 +30,7 @@
           "children": []
         },
         {
-          "name": "入门指南",
+          "name": "视频教程",
           "url": "https://space.bilibili.com/137324885/channel/seriesdetail?sid=1731028",
           "children": []
         },
@@ -71,32 +71,6 @@
           "children": []
         },
         {
-          "name": "社区产品",
-          "url": "",
-          "children": [
-            {
-              "name": "深度桌面环境",
-              "url": "https://www.deepin.org/zh/dde/"
-            },
-            {
-              "name": "深度桌面移植",
-              "url": "https://www.deepin.org/zh/dde/desktop-transplantation/"
-            },
-            {
-              "name": "深度原创应用",
-              "url": "https://www.deepin.org/zh/original/deepin-boot-maker/"
-            },
-            {
-              "name": "玲珑",
-              "url": "https://www.linglong.space/"
-            },
-            {
-              "name": "跨端协同",
-              "url": "https://www.deepin.org/index/assistant"
-            }
-          ]
-        },
-        {
           "name": "找到SIG组",
           "url": "",
           "children": [
@@ -125,6 +99,11 @@
               "url": "https://www.deepin.org/index/zh/docs/sig/sig/LISTS"
             }
           ]
+        },
+        {
+          "name": "博客",
+          "url": "https://blog.deepin.org",
+          "children": []
         },
         {
           "name": "活动",
@@ -197,9 +176,35 @@
       "children": []
     },
     {
-      "name": "博客",
-      "url": "https://blog.deepin.org",
-      "children": []
+      "name": "社区产品",
+      "url": "",
+      "children": [
+        {
+          "name": "深度桌面环境",
+          "url": "https://www.deepin.org/zh/dde/",
+          "children": []
+        },
+        {
+          "name": "深度桌面移植",
+          "url": "https://www.deepin.org/zh/dde/desktop-transplantation/",
+          "children": []
+        },
+        {
+          "name": "深度原创应用",
+          "url": "https://www.deepin.org/zh/original/deepin-boot-maker/",
+          "children": []
+        },
+        {
+          "name": "玲珑",
+          "url": "https://www.linglong.space/",
+          "children": []
+        },
+        {
+          "name": "跨端协同",
+          "url": "https://www.deepin.org/index/assistant",
+          "children": []
+        }
+      ]
     }
   ]
 }
