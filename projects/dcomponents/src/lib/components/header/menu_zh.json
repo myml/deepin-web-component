@@ -66,11 +66,6 @@
           "children": []
         },
         {
-          "name": "上游贡献",
-          "url": "https://www.deepin.org/index/zh/docs/developer-center/upstream-contributions/README",
-          "children": []
-        },
-        {
           "name": "找到SIG组",
           "url": "",
           "children": [
@@ -111,6 +106,11 @@
           "children": []
         },
         {
+          "name": "开发者文档",
+          "url": "https://docs.deepin.org/",
+          "children": []
+        },
+        {
           "name": "联系社区",
           "url": "https://www.deepin.org/index/zh/docs/wiki/06_关于Deepin/Deepin社区/交流方式",
           "children": []
@@ -144,6 +144,11 @@
           ]
         },
         {
+          "name": "上游贡献",
+          "url": "https://www.deepin.org/index/zh/docs/developer-center/upstream-contributions/README",
+          "children": []
+        },
+        {
           "name": "应用投递",
           "url": "https://appdelivery.deepin.org.cn/",
           "children": []
@@ -151,11 +156,6 @@
         {
           "name": "Issues",
           "url": "https://github.com/linuxdeepin/developer-center/issues",
-          "children": []
-        },
-        {
-          "name": "开发者文档",
-          "url": "https://docs.deepin.org/",
           "children": []
         },
         {
@@ -176,7 +176,7 @@
       "children": []
     },
     {
-      "name": "社区产品",
+      "name": "产品",
       "url": "",
       "children": [
         {
