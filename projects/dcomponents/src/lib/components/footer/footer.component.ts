@@ -33,6 +33,8 @@ export class FooterComponent implements OnInit, OnChanges {
   @Input() data!: string;
   @Input()
   copyright = `© 2011-${new Date().getFullYear()} Wuhan Deepin Technology Co., Ltd.`;
+  @Input()
+  icp = '';
   refreshData$ = new BehaviorSubject('');
   data$ = this.createDataObs();
 
@@ -40,6 +42,14 @@ export class FooterComponent implements OnInit, OnChanges {
   remoteEn$ = this.remoteData('en');
 
   ngOnInit(): void {
+    if (this.icp == '') {
+      if (location.hostname.endsWith('deepin.cn')) {
+        this.icp = '鄂ICP备14003693号';
+      }
+      if (location.hostname.endsWith('deepin.org.cn')) {
+        this.icp = '京ICP备20003780号';
+      }
+    }
     this.refreshData$.next('');
   }
   ngOnChanges(changes: SimpleChanges): void {
