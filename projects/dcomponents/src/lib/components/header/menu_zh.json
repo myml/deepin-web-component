@@ -123,6 +123,11 @@
           "name": "联系社区",
           "url": "https://www.deepin.org/index/zh/docs/wiki/06_关于Deepin/Deepin社区/交流方式",
           "children": []
+        },
+        {
+          "name": "安全公告",
+          "url": "https://security.deepin.org.cn",
+          "children": []
         }
       ]
     },
