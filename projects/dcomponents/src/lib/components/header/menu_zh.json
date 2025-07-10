@@ -194,11 +194,6 @@
       "url": "",
       "children": [
         {
-          "name": "统信Windows应用兼容引擎",
-          "url": "",
-          "children": []
-        },
-        {
           "name": "深度桌面环境",
           "url": "https://www.deepin.org/zh/dde/",
           "children": []
@@ -221,6 +216,11 @@
         {
           "name": "跨端协同",
           "url": "https://www.deepin.org/index/assistant",
+          "children": []
+        },
+        {
+          "name": "统信Windows应用兼容引擎",
+          "url": "https://wine.deepin.org/",
           "children": []
         }
       ]
