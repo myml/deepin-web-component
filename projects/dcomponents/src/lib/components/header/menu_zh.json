@@ -194,6 +194,11 @@
       "url": "",
       "children": [
         {
+          "name": "统信Windows应用兼容引擎",
+          "url": "",
+          "children": []
+        },
+        {
           "name": "深度桌面环境",
           "url": "https://www.deepin.org/zh/dde/",
           "children": []
