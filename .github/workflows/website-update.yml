@@ -29,4 +29,4 @@ jobs:
           token: ${{ secrets.PAT }}
 
       - name: Trigger deepin website update
-        run: curl ${{ secrets.DEEPIN_WEBSITE_WEBHOOK }}
+        run: sleep 600 && curl ${{ secrets.DEEPIN_WEBSITE_WEBHOOK }}
