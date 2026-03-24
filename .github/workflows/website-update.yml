@@ -2,7 +2,8 @@ name: Website Update
 on:
   push:
   workflow_dispatch:
-
+  repository_dispatch:
+    types: [auto-update]
 jobs:
   build:
     runs-on: ubuntu-latest
