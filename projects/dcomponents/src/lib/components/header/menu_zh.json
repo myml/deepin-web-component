@@ -168,11 +168,6 @@
           "children": []
         },
         {
-          "name": "CLA签署",
-          "url": "https://cla.deepin.org/",
-          "children": []
-        },
-        {
           "name": "Issues",
           "url": "https://github.com/linuxdeepin/developer-center/issues",
           "children": []

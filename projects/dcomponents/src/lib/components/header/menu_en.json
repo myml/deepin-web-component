@@ -106,11 +106,6 @@
           "children": []
         },
         {
-          "name": "CLA",
-          "url": "https://cla.deepin.org/",
-          "children": []
-        },
-        {
           "name": "App Delivery",
           "url": "https://appdelivery.deepin.org.cn/",
           "children": []
