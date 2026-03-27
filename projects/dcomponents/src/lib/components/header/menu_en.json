@@ -82,6 +82,11 @@
           "children": []
         },
         {
+          "name": "CLA",
+          "url": "https://cla.deepin.org/",
+          "children": []
+        },
+        {
           "name": "Source Code",
           "url": "https://github.com/linuxdeepin",
           "children": []
