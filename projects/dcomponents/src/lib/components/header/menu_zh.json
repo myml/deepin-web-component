@@ -1,1 +1,234 @@
-{}
+{
+  "menu": [
+    {
+      "name": "首页",
+      "url": "/",
+      "children": []
+    },
+    {
+      "name": "下载和帮助",
+      "url": "",
+      "children": [
+        {
+          "name": "镜像下载",
+          "url": "https://www.deepin.org/zh/download/",
+          "children": []
+        },
+        {
+          "name": "安装指南",
+          "url": "https://www.deepin.org/zh/deepin-25-installation/",
+          "children": []
+        },
+        {
+          "name": "发行注记",
+          "url": "https://www.deepin.org/zh/release-notes/",
+          "children": []
+        },
+        {
+          "name": "使用帮助",
+          "url": "https://www.deepin.org/index/zh/docs/wiki/04_常见问题FAQ/deepin常用资源整理",
+          "children": []
+        },
+        {
+          "name": "视频教程",
+          "url": "https://space.bilibili.com/137324885/channel/seriesdetail?sid=1731028",
+          "children": []
+        },
+        {
+          "name": "版本规划",
+          "url": "https://www.deepin.org/zh/developer-community/planning/",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "新闻",
+      "url": "https://www.deepin.org/zh/community-news/",
+      "children": []
+    },
+    {
+      "name": "WIKI",
+      "url": "https://wiki.deepin.org/zh/home",
+      "children": []
+    },
+    {
+      "name": "社区",
+      "url": "",
+      "children": [
+        {
+          "name": "关于社区",
+          "url": "https://www.deepin.org/zh/about-deepin-community/",
+          "children": []
+        },
+        {
+          "name": "行为准则",
+          "url": "https://www.deepin.org/zh/community-code-of-conduct/",
+          "children": []
+        },
+        {
+          "name": "找到SIG组",
+          "url": "",
+          "children": [
+            {
+              "name": "创建和管理指南",
+              "url": "https://www.deepin.org/index/zh/docs/sig/sig/README"
+            },
+            {
+              "name": "deepin-ports",
+              "url": "https://www.deepin.org/index/zh/docs/sig/sig/deepin-ports/README"
+            },
+            {
+              "name": "deepin-testsig",
+              "url": "https://www.deepin.org/index/zh/docs/sig/sig/deepin-testsig/README"
+            },
+            {
+              "name": "deepin-wiki",
+              "url": "https://www.deepin.org/index/zh/docs/sig/sig/deepin-wiki/README"
+            },
+            {
+              "name": "spark-store-deepin",
+              "url": "https://www.deepin.org/index/zh/docs/sig/sig/spark-store-deepin/README"
+            },
+            {
+              "name": "更多",
+              "url": "https://www.deepin.org/index/zh/docs/sig/sig/LISTS"
+            }
+          ]
+        },
+        {
+          "name": "博客",
+          "url": "https://blog.deepin.org",
+          "children": []
+        },
+        {
+          "name": "活动",
+          "url": "https://www.deepin.org/community-events/",
+          "children": []
+        },
+        {
+          "name": "开发者文档",
+          "url": "",
+          "children": [
+            {
+              "name": "DTK文档",
+              "url": "https://docs.deepin.org"
+            },
+            {
+              "name": "软件包选型",
+              "url": "https://wiki.deepin.org/zh/03_%E6%8A%80%E6%9C%AF%E8%A7%84%E8%8C%83/00_%E8%BD%AF%E4%BB%B6%E5%8C%85%E4%B8%8E%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/deepin25%E8%BD%AF%E4%BB%B6%E5%8C%85%E9%80%89%E5%9E%8B"
+            }
+          ]
+        },
+        {
+          "name": "联系社区",
+          "url": "https://www.deepin.org/index/zh/docs/wiki/06_关于Deepin/Deepin社区/交流方式",
+          "children": []
+        },
+        {
+          "name": "安全公告",
+          "url": "https://security.deepin.org.cn",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "贡献",
+      "url": "",
+      "children": [
+        {
+          "name": "贡献指引",
+          "url": "",
+          "children": [
+            {
+              "name": "参与社区",
+              "url": "https://www.deepin.org/index/zh/docs/wiki/06_关于Deepin/Deepin社区/参与我们"
+            },
+            {
+              "name": "贡献代码",
+              "url": "https://www.deepin.org/index/zh/docs/wiki/05_HOW-TO/06_参与deepin贡献相关/如何贡献代码"
+            },
+            {
+              "name": "贡献文档",
+              "url": "https://www.deepin.org/index/zh/docs/wiki/05_HOW-TO/06_参与deepin贡献相关/如何贡献文档"
+            },
+            {
+              "name": "国际化",
+              "url": "https://www.deepin.org/developer-community/internationalization/"
+            }
+          ]
+        },
+        {
+          "name": "上游贡献",
+          "url": "https://www.deepin.org/index/zh/docs/developer-center/upstream-contributions/README",
+          "children": []
+        },
+        {
+          "name": "应用投递",
+          "url": "https://appdelivery.deepin.org.cn/",
+          "children": []
+        },
+        {
+          "name": "CLA签署",
+          "url": "https://cla.deepin.org/",
+          "children": []
+        },
+        {
+          "name": "Issues",
+          "url": "https://github.com/linuxdeepin/developer-center/issues",
+          "children": []
+        },
+        {
+          "name": "贡献看板",
+          "url": "https://www.deepin.org/index/datastat",
+          "children": []
+        },
+        {
+          "name": "邮件订阅",
+          "url": "https://www.freelists.org/list/deepin-devel",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "论坛",
+      "url": "https://bbs.deepin.org",
+      "children": []
+    },
+    {
+      "name": "产品",
+      "url": "",
+      "children": [
+        {
+          "name": "深度桌面环境",
+          "url": "https://www.deepin.org/zh/dde/",
+          "children": []
+        },
+        {
+          "name": "深度桌面移植",
+          "url": "https://www.deepin.org/zh/dde/desktop-transplantation/",
+          "children": []
+        },
+        {
+          "name": "深度原创应用",
+          "url": "https://www.deepin.org/zh/original/deepin-boot-maker/",
+          "children": []
+        },
+        {
+          "name": "如意玲珑",
+          "url": "https://www.linglong.space/",
+          "children": []
+        },
+        {
+          "name": "跨端协同",
+          "url": "https://www.deepin.org/index/assistant",
+          "children": []
+        },
+        {
+          "name": "统信Windows应用兼容引擎",
+          "url": "https://wine.deepin.org/",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

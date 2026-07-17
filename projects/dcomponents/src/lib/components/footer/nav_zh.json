@@ -1,1 +1,115 @@
-{}
+{
+  "navs": [
+    {
+      "title": "关于deepin",
+      "links": [
+        {
+          "text": "关于我们",
+          "url": "https://www.deepin.org/zh/aboutus/"
+        },
+        {
+          "text": "联系我们",
+          "url": "https://www.deepin.org/zh/contactus/"
+        },
+        {
+          "text": "条款协议",
+          "url": "https://www.deepin.org/zh/agreement"
+        },
+        {
+          "text": "国际排名",
+          "url": "https://distrowatch.com/table.php?distribution=deepin"
+        }
+      ]
+    },
+    {
+      "title": "海外社区",
+      "links": [
+        {
+          "text": "西班牙语",
+          "url": "https://deepinenespañol.org/"
+        },
+        {
+          "text": "斯洛伐克",
+          "url": "https://deepin.sk/"
+        },
+        {
+          "text": "土耳其",
+          "url": "https://deepintr.js.org/"
+        },
+        {
+          "text": "巴西",
+          "url": "https://deepinbrasil.github.io/"
+        },
+        {
+          "text": "俄罗斯",
+          "url": "https://mydeepin.ru/"
+        },
+        {
+          "text": "厄瓜多尔",
+          "url": "https://deepin.lat/"
+        },
+        {
+          "text": "法语",
+          "url": "https://deepinfrance.com/"
+        },
+        {
+          "text": "玻利维亚",
+          "url": "https://deepinbolivia.com/"
+        },
+        {
+          "text": "沙特阿拉伯",
+          "url": "https://deepin.mydeom.com/"
+        },
+        {
+          "text": "日本",
+          "url": "https://www.deepinjapanese.org/"
+        },
+        {
+          "text": "印度尼西亚",
+          "url": "https://deepin.id/"
+        }
+      ]
+    },
+    {
+      "title": "友情链接",
+      "links": [
+        {
+          "text": "Ventoy",
+          "url": "https://www.ventoy.net"
+        },
+        {
+          "text": "uTools",
+          "url": "https://www.u.tools"
+        },
+        {
+          "text": "OSCHINA",
+          "url": "https://www.oschina.net"
+        },
+        {
+          "text": "CodeGeeX",
+          "url": "https://codegeex.cn/"
+        }
+      ]
+    }
+  ],
+  "qr": {
+    "title": "加入我们",
+    "imgs": [
+      {
+        "text": "关注社区微信公众号",
+        "url": "",
+        "img": "https://bbs.deepin.org/assets/contact/wx.png"
+      },
+      {
+        "text": "论坛微信小程序",
+        "url": "",
+        "img": "https://www.deepin.org/wp-content/uploads/2023/11/deepin小程序码.png"
+      },
+      {
+        "text": "deepin小助手",
+        "url": "",
+        "img": "https://www.deepin.org/wp-content/uploads/2024/08/xiaozhushou.png"
+      }
+    ]
+  }
+}

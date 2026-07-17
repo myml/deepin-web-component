@@ -1,1 +1,126 @@
-{}
+{
+  "menu": [
+    {
+      "name": "HOME",
+      "url": "/",
+      "children": []
+    },
+    {
+      "name": "NEWS",
+      "url": "https://www.deepin.org/en/community-news/",
+      "children": []
+    },
+    {
+      "name": "DOWNLOAD & HELP",
+      "url": "",
+      "children": [
+        {
+          "name": "ISO Download",
+          "url": "https://www.deepin.org/en/download/",
+          "children": []
+        },
+        {
+          "name": "Installation Guide",
+          "url": "https://www.deepin.org/en/deepin-25-installation/",
+          "children": []
+        },
+        {
+          "name": "Release Notes",
+          "url": "https://www.deepin.org/en/release-notes/",
+          "children": []
+        },
+        {
+          "name": "Wiki",
+          "url": "https://wiki.deepin.org/en/home",
+          "children": []
+        },
+        {
+          "name": "Product Planning",
+          "url": "https://www.deepin.org/en/developer-community/planning/",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Community",
+      "url": "",
+      "children": [
+        {
+          "name": "About Community",
+          "url": "https://www.deepin.org/about-deepin-community/",
+          "children": []
+        },
+        {
+          "name": "CCoC",
+          "url": "https://www.deepin.org/en/community-code-of-conduct/",
+          "children": []
+        },
+        {
+          "name": "Upstream Contributes",
+          "url": "https://www.deepin.org/index/en/docs/developer-center/upstream-contributions/README",
+          "children": []
+        },
+        {
+          "name": "Contact Community",
+          "url": "https://www.deepin.org/index/en/docs/wiki/en/About_Deepin/Contact-the-deepin-Officials",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "DEVELOPER",
+      "url": "",
+      "children": [
+        {
+          "name": "Documents",
+          "url": "https://docs.deepin.org/",
+          "children": []
+        },
+        {
+          "name": "Contribute Code",
+          "url": "https://www.deepin.org/index/en/docs/wiki/en/About_Deepin/contribute_code",
+          "children": []
+        },
+        {
+          "name": "CLA",
+          "url": "https://cla.deepin.org/",
+          "children": []
+        },
+        {
+          "name": "Source Code",
+          "url": "https://github.com/linuxdeepin",
+          "children": []
+        },
+        {
+          "name": "SIG",
+          "url": "",
+          "children": [
+            {
+              "name": "SIG Setup",
+              "url": "https://www.deepin.org/index/en/docs/sig/sig/README"
+            },
+            {
+              "name": "deepin-wiki",
+              "url": "https://www.deepin.org/index/en/docs/sig/sig/deepin-wiki/README"
+            }
+          ]
+        },
+        {
+          "name": "Mailing List",
+          "url": "https://www.freelists.org/list/deepin-devel",
+          "children": []
+        },
+        {
+          "name": "App Delivery",
+          "url": "https://appdelivery.deepin.org.cn/",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "FORUM",
+      "url": "https://bbs.deepin.org/en",
+      "children": []
+    }
+  ]
+}
