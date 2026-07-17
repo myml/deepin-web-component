@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "analyzer": "ng build --stats-json && webpack-bundle-analyzer dist/deepin-components/stats.json",
-    "gen": "tsc mingdao.ts && node mingdao.js",
+    "gen": "npx tsx mingdao.ts",
     "wc": "ng build web-components && cat dist/web-components/*.js > dist/web-components/main.js && cat dist/web-components/*.css > dist/web-components/main.css"
   },
   "private": false,
