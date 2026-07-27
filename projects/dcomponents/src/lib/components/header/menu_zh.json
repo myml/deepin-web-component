@@ -168,11 +168,6 @@
           "children": []
         },
         {
-          "name": "CLA签署",
-          "url": "https://cla.deepin.org/",
-          "children": []
-        },
-        {
           "name": "Issues",
           "url": "https://github.com/linuxdeepin/developer-center/issues",
           "children": []
@@ -188,6 +183,11 @@
           "children": []
         }
       ]
+    },
+    {
+      "name": "贡献协议",
+      "url": "https://cla.deepin.org/static/",
+      "children": []
     },
     {
       "name": "论坛",
