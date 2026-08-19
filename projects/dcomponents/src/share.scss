@@ -4,6 +4,10 @@ li {
   padding: 0;
   list-style: none;
 }
+// 覆盖宿主页面可能存在的 li > ul margin（如 WordPress 主题的 li>ul { margin-left:15px }）
+li > ul {
+  margin: 0;
+}
 a {
   text-decoration: none;
 }
