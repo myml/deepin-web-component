@@ -72,11 +72,6 @@
       "url": "",
       "children": [
         {
-          "name": "Documents",
-          "url": "https://docs.deepin.org/",
-          "children": []
-        },
-        {
           "name": "Contribute Code",
           "url": "https://www.deepin.org/index/en/docs/wiki/en/About_Deepin/contribute_code",
           "children": []

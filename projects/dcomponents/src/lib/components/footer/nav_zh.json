@@ -5,15 +5,15 @@
       "links": [
         {
           "text": "关于我们",
-          "url": "https://www.deepin.org/zh/aboutus/"
+          "url": "/zh/aboutus/"
         },
         {
           "text": "联系我们",
-          "url": "https://www.deepin.org/zh/contactus/"
+          "url": "/zh/contactus/"
         },
         {
           "text": "条款协议",
-          "url": "https://www.deepin.org/zh/agreement"
+          "url": "/zh/agreement"
         },
         {
           "text": "国际排名",
@@ -72,10 +72,6 @@
         {
           "text": "Ventoy",
           "url": "https://www.ventoy.net"
-        },
-        {
-          "text": "uTools",
-          "url": "https://www.u.tools"
         },
         {
           "text": "OSCHINA",
