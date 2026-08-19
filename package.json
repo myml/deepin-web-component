@@ -36,6 +36,7 @@
     "@angular/cli": "~16.0.2",
     "@angular/compiler-cli": "^16.0.2",
     "@types/jasmine": "~4.0.0",
+    "@types/node": "18.19.1",
     "@types/node-fetch": "^2.6.4",
     "dotenv": "^16.0.1",
     "jasmine-core": "~4.1.0",
