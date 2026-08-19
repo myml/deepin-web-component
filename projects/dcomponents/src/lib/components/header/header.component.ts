@@ -2,6 +2,7 @@ import {
   ChangeDetectorRef,
   Component,
   HostBinding,
+  HostListener,
   Input,
   OnChanges,
   OnInit,
@@ -116,6 +117,29 @@ export class HeaderComponent implements OnInit, OnChanges {
   phoneMenuClick() {
     this.phoneMenuShow = !this.phoneMenuShow;
     this.cdr.detectChanges();
+  }
+
+  // 触屏设备没有 hover，点击 slot 注入的菜单项（如语言切换 .menu-click）时展开/收起子菜单
+  @HostListener('click', ['$event'])
+  onSlotMenuClick(event: MouseEvent) {
+    if (
+      !window.matchMedia('(hover: none)').matches &&
+      navigator.maxTouchPoints === 0
+    ) {
+      return;
+    }
+    const target = event.target as HTMLElement | null;
+    if (!target || typeof target.closest !== 'function') {
+      return;
+    }
+    const trigger = target.closest<HTMLElement>('.menu-click');
+    if (!trigger) {
+      return;
+    }
+    const li = trigger.closest<HTMLElement>('li.d-menu-li');
+    if (li) {
+      li.classList.toggle('hover');
+    }
   }
 }
 
