@@ -7,6 +7,7 @@ import {
   OnChanges,
   OnInit,
   SimpleChanges,
+  ViewEncapsulation,
 } from '@angular/core';
 import {
   BehaviorSubject,
@@ -25,6 +26,7 @@ import navZH from './nav_zh.json';
   selector: 'd-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class FooterComponent implements OnInit, OnChanges {
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
