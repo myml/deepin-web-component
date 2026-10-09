@@ -29,7 +29,7 @@ import navZH from './nav_zh.json';
   encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class FooterComponent implements OnInit, OnChanges {
-  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) { }
   @HostBinding('class') class = 'd-footer';
   @Input() lang: 'zh' | 'en' = 'zh';
   @Input() data!: string;
@@ -87,9 +87,17 @@ export class FooterComponent implements OnInit, OnChanges {
       shareReplay({ refCount: true, bufferSize: 1 })
     );
   }
+  getOrigin() {
+    let origin = "https://www.deepin.org";
+    if (location.origin.endsWith('deepin.cn')) {
+      origin = "https://www.deepin.cn";
+    }
+    return origin;
+  }
   remoteData(lang: string) {
-    const url = `https://www.deepin.org/index/src/assets/docs/${lang}/deepin-web-component/footer/nav_${lang}.json`;
-    return this.http.get<DataModule>(url);
+    const origin = this.getOrigin();
+    const url = `${origin}/index/src/assets/docs/${lang}/deepin-web-component/footer/nav_${lang}.json`;
+    return this.http.get<DataModule>(url)
   }
 }
 

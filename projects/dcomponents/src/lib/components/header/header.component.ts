@@ -59,8 +59,18 @@ export class HeaderComponent implements OnInit, OnChanges {
     return this.isZH ? menuZH.menu : menuEN.menu;
   }
 
+
+  getOrigin() {
+    let origin = "https://www.deepin.org";
+    if (location.origin.endsWith('deepin.cn')) {
+      origin = "https://www.deepin.org.cn";
+    }
+    return origin;
+  }
+
   getRemoteURL(lang: string) {
-    return `https://www.deepin.org/index/src/assets/docs/${lang}/deepin-web-component/header/menu_${lang}.json`;
+    const orgin = this.getOrigin();
+    return `${orgin}/index/src/assets/docs/${lang}/deepin-web-component/header/menu_${lang}.json`;
   }
 
   updateMenu() {
