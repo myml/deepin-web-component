@@ -5,15 +5,15 @@
       "links": [
         {
           "text": "关于我们",
-          "url": "/zh/aboutus/"
+          "url": "https://www.deepin.org.cn/zh/aboutus/"
         },
         {
           "text": "联系我们",
-          "url": "/zh/contactus/"
+          "url": "https://www.deepin.org.cn/zh/contactus/"
         },
         {
           "text": "条款协议",
-          "url": "/zh/agreement"
+          "url": "https://www.deepin.org.cn/zh/agreement"
         },
         {
           "text": "国际排名",
